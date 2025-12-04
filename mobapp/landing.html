@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Recharge - Quick & Easy Recharges</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Header/Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #11998e;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-login, .btn-signup {
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            color: #11998e;
+            border: 2px solid #11998e;
+            background: transparent;
+        }
+
+        .btn-login:hover {
+            background: #11998e;
+            color: white;
+        }
+
+        .btn-signup {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(17, 153, 142, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(-45deg, #11998e, #38ef7d, #0575e6, #00f2fe);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            padding: 150px 20px 100px;
+            text-align: center;
+            color: white;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 15px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #11998e;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #11998e;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .steps {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .step h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Operators Section */
+        .operators {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .operators-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+
+        .operator-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .operator-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .operator-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+        }
+
+        .operator-card p {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 4px solid #11998e;
+        }
+
+        .testimonial-card .rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .testimonial-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .author-info h4 {
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .author-info p {
+            color: #999;
+            font-size: 14px;
+            margin: 0;
+            font-style: normal;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta .btn-primary {
+            background: white;
+            color: #11998e;
+            padding: 18px 45px;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #38ef7d;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .cta h2 {
+                font-size: 32px;
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-mobile-alt"></i> MobileRecharge
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#operators">Operators</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="moblogin.html" class="btn-login">Login</a>
+                <a href="register.html" class="btn-signup">Sign Up</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Recharge Made Simple</h1>
+            <p>Instant mobile recharges for all operators with exciting cashback offers and secure payments</p>
+            <div class="hero-buttons">
+                <a href="moblogin.html" class="btn-primary">Get Started</a>
+                <a href="#how-it-works" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Why Choose Us?</h2>
+            <p>Experience the best mobile recharge service with amazing benefits</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Instant Recharge</h3>
+                <p>Lightning-fast recharges completed in seconds for all major operators</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>100% Secure</h3>
+                <p>Bank-grade encryption ensures your transactions are always safe</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Cashback Offers</h3>
+                <p>Exciting cashback and rewards on every recharge you make</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock customer support to assist you anytime</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3>Transaction History</h3>
+                <p>Track all your recharges with detailed transaction reports</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Smart Reminders</h3>
+                <p>Never miss a recharge with automated bill payment alerts</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-title">
+            <h2>How It Works</h2>
+            <p>Recharge in just 3 simple steps</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Enter Details</h3>
+                <p>Enter your mobile number and select your operator</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Choose Plan</h3>
+                <p>Select your preferred recharge plan or amount</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Pay & Recharge</h3>
+                <p>Complete payment and get instant recharge confirmation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operators Section -->
+    <section class="operators" id="operators">
+        <div class="section-title">
+            <h2>All Operators Supported</h2>
+            <p>We support all major mobile operators across the country</p>
+        </div>
+        <div class="operators-grid">
+            <div class="operator-card">
+                <div class="operator-icon">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <p>Airtel</p>
+            </div>
+            <div class="operator-card">
+                <div class="operator-icon">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <p>Vodafone Idea</p>
+            </div>
+            <div class="operator-card">
+                <div class="operator-icon">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <p>Jio</p>
+            </div>
+            <div class="operator-card">
+                <div class="operator-icon">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <p>BSNL</p>
+            </div>
+            <div class="operator-card">
+                <div class="operator-icon">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <p>Aircel</p>
+            </div>
+            <div class="operator-card">
+                <div class="operator-icon">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <p>MTNL</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-title">
+            <h2>What Our Users Say</h2>
+            <p>Join thousands of satisfied customers</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Best recharge platform I've ever used! Super fast and the cashback offers are amazing. Highly recommended!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RK</div>
+                    <div class="author-info">
+                        <h4>Rajesh Kumar</h4>
+                        <p>Mumbai, Maharashtra</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The transaction history feature is very helpful for tracking my expenses. Easy to use and reliable service."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">PS</div>
+                    <div class="author-info">
+                        <h4>Priya Sharma</h4>
+                        <p>Delhi, NCR</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Never had any issues with payments. Customer support is excellent and always ready to help. Great app!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AM</div>
+                    <div class="author-info">
+                        <h4>Amit Mehta</h4>
+                        <p>Bangalore, Karnataka</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Get Started?</h2>
+        <p>Join thousands of users enjoying hassle-free mobile recharges</p>
+        <a href="register.html" class="btn-primary">Create Free Account</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We provide the fastest and most secure mobile recharge service with exciting offers and 24/7 support.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#operators">Operators</a></li>
+                    <li><a href="moblogin.html">Login</a></li>
+                    <li><a href="register.html">Sign Up</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +91 1800-123-4567</li>
+                    <li><i class="fas fa-envelope"></i> support@mobilerecharge.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Business Street, Mumbai, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MobileRecharge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
