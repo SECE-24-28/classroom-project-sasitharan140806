@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobile Recharge - Create Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -33,7 +34,7 @@
         }
 
         .register-left {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             padding: 50px 40px;
             flex: 1;
             color: white;
@@ -66,7 +67,9 @@
         }
 
         .benefits li:before {
-            content: "✓";
+            content: "\f005";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
             position: absolute;
             left: 0;
             background: rgba(255, 255, 255, 0.2);
@@ -76,7 +79,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-size: 11px;
         }
 
         .register-right {
@@ -130,8 +133,8 @@
 
         .input-wrapper input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #11998e;
+            box-shadow: 0 0 0 3px rgba(17, 153, 142, 0.1);
         }
 
         .input-icon {
@@ -139,8 +142,8 @@
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: #999;
-            font-size: 18px;
+            color: #11998e;
+            font-size: 16px;
         }
 
         .terms {
@@ -160,7 +163,7 @@
         }
 
         .terms a {
-            color: #667eea;
+            color: #11998e;
             text-decoration: none;
         }
 
@@ -171,7 +174,7 @@
         .register-button {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -184,7 +187,7 @@
 
         .register-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px rgba(17, 153, 142, 0.4);
         }
 
         .register-button:active {
@@ -198,7 +201,7 @@
         }
 
         .login-link a {
-            color: #667eea;
+            color: #11998e;
             text-decoration: none;
             font-weight: 600;
         }
@@ -273,7 +276,7 @@
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
                     <div class="input-wrapper">
-                        <span class="input-icon">👤</span>
+                        <i class="fas fa-user input-icon"></i>
                         <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
                     </div>
                 </div>
@@ -281,7 +284,7 @@
                 <div class="form-group">
                     <label for="mobile">Mobile Number</label>
                     <div class="input-wrapper">
-                        <span class="input-icon">📱</span>
+                        <i class="fas fa-phone input-icon"></i>
                         <input type="tel" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
                     </div>
                 </div>
@@ -289,7 +292,7 @@
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <div class="input-wrapper">
-                        <span class="input-icon">✉️</span>
+                        <i class="fas fa-envelope input-icon"></i>
                         <input type="email" id="email" name="email" placeholder="Enter your email" required>
                     </div>
                 </div>
@@ -297,7 +300,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-wrapper">
-                        <span class="input-icon">🔒</span>
+                        <i class="fas fa-key input-icon"></i>
                         <input type="password" id="password" name="password" placeholder="Create a strong password" required minlength="6">
                     </div>
                     <div class="password-strength">
@@ -308,7 +311,7 @@
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
                     <div class="input-wrapper">
-                        <span class="input-icon">🔒</span>
+                        <i class="fas fa-check-circle input-icon"></i>
                         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
                     </div>
                 </div>
