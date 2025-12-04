@@ -1,0 +1,45 @@
+<html lang="en">
+    <head><title>JS</title></head>
+<script>
+    let name = "John";
+    var age =55;
+    const PI = 3.14;
+    let isvalid = true;
+    let num = [1,2,3,4,5];
+    let person ={
+        name:"John",
+        age:23,
+    };
+    console.log("Hello, "+name+"!");
+    console.log(PI);
+    console.log(isvalid)
+    console.log(num);
+    num.push(20);
+    console.log(num);
+    console.log(num[2]);
+    console.log(person.name);
+    let arr = [10,20,90,59];
+    console.log("Array of ",arr);
+    console.log("Reverse of ",arr.reverse());
+    arr.sort();
+    console.log("Sort Order of ",arr);
+    for(const n of num){
+        console.log(n);
+    }
+    for(const key in person){
+        console.log(key + ":" +person[key]);
+    }
+
+    function greet(name){
+        return "Hello " + name;
+    }
+    console.log(greet("Sasi"));
+    
+
+</script>
+<body>
+    
+    <h3>SASI</h3>
+    <button class="btn">click me</button>
+</body>
+</html>
