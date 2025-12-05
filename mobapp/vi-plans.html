@@ -289,8 +289,9 @@
             window.location.href = `plan-details.html?planId=${planId}&operator=Vi`;
         }
         function selectPlan(price, validity, planType) {
-            localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'Vodafone Idea (Vi)', price, validity, planType }));
-            alert(`Selected Vi ₹${price} plan (${validity})\n\nRedirecting to payment...`);
+            const planId = `vi_${price}`;
+            localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'Vodafone Idea (Vi)', price, validity, planType, planId }));
+            window.location.href = 'payment.html';
         }
     </script>
 </body>

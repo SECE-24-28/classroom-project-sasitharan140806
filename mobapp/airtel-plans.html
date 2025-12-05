@@ -543,14 +543,15 @@
         }
 
         function selectPlan(price, validity, planType) {
+            const planId = `airtel_${price}`;
             localStorage.setItem('selectedPlan', JSON.stringify({
                 operator: 'Airtel',
                 price: price,
                 validity: validity,
-                planType: planType
+                planType: planType,
+                planId: planId
             }));
-            
-            alert(`Selected Airtel ₹${price} plan (${validity})\n\nRedirecting to payment...`);
+            window.location.href = 'payment.html';
         }
     </script>
 </body>

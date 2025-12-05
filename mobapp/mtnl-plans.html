@@ -272,8 +272,9 @@
             });
         }
         function selectPlan(price, validity, planType) {
-            localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'MTNL', price, validity, planType }));
-            alert(`Selected MTNL ₹${price} plan (${validity})\n\nRedirecting to payment...`);
+            const planId = `mtnl_${price}`;
+            localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'MTNL', price, validity, planType, planId }));
+            window.location.href = 'payment.html';
         }
     </script>
 </body>

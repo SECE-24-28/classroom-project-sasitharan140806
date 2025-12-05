@@ -272,8 +272,9 @@
             });
         }
         function selectPlan(price, validity, planType) {
-            localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'Aircel', price, validity, planType }));
-            alert(`Selected Aircel ₹${price} plan (${validity})\n\nRedirecting to payment...`);
+            const planId = `aircel_${price}`;
+            localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'Aircel', price, validity, planType, planId }));
+            window.location.href = 'payment.html';
         }
     </script>
 </body>

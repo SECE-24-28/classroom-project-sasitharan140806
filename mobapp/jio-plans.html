@@ -548,17 +548,15 @@
         }
 
         function selectPlan(price, validity, planType) {
-            // Store plan details in localStorage
+            const planId = `jio_${price}`;
             localStorage.setItem('selectedPlan', JSON.stringify({
                 operator: 'Jio',
                 price: price,
                 validity: validity,
-                planType: planType
+                planType: planType,
+                planId: planId
             }));
-            
-            // Redirect to recharge page (you'll need to create this)
-            alert(`Selected Jio ₹${price} plan (${validity})\n\nRedirecting to payment...`);
-            // window.location.href = 'recharge-payment.html';
+            window.location.href = 'payment.html';
         }
     </script>
 </body>
