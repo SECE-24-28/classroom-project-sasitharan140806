@@ -239,8 +239,10 @@
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             padding: 150px 20px 100px;
-            text-align: center;
             color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         @keyframes gradientShift {
@@ -250,8 +252,29 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+            border-radius: 20px;
         }
 
         .hero h1 {
@@ -424,45 +447,52 @@
             background: white;
         }
 
-        .steps {
-            max-width: 1000px;
+        .steps-container {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .steps-image {
+            position: relative;
+        }
+
+        .steps-image img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .steps {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 40px;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .step {
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
             transition: all 0.3s ease;
         }
 
         .step:hover {
-            transform: translateY(-10px);
-        }
-
-        .step::after {
-            content: '→';
-            position: absolute;
-            right: -30px;
-            top: 30px;
-            font-size: 30px;
-            color: #11998e;
-            animation: slideRight 1.5s infinite;
-        }
-
-        .step:last-child::after {
-            display: none;
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.15);
+            background: white;
         }
 
         .step-number {
-            width: 60px;
+            min-width: 60px;
             height: 60px;
-            margin: 0 auto 20px;
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             border-radius: 50%;
             display: flex;
@@ -476,7 +506,7 @@
         }
 
         .step:hover .step-number {
-            transform: rotate(360deg) scale(1.2);
+            transform: rotate(360deg) scale(1.1);
             box-shadow: 0 10px 30px rgba(17, 153, 142, 0.5);
         }
 
@@ -490,15 +520,26 @@
             animation: pulse-ring 2s infinite;
         }
 
-        .step h3 {
+        .step-content h3 {
             font-size: 20px;
             color: #333;
             margin-bottom: 10px;
         }
 
-        .step p {
+        .step-content p {
             color: #666;
             line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-image {
+                order: -1;
+                text-align: center;
+            }
         }
 
         /* Operators Section */
@@ -779,6 +820,23 @@
                 display: block;
             }
 
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image img {
+                max-width: 300px;
+            }
+
             .hero h1 {
                 font-size: 36px;
             }
@@ -843,11 +901,16 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Recharge Made Simple</h1>
-            <p>Instant mobile recharges for all operators with exciting cashback offers and secure payments</p>
-            <div class="hero-buttons">
-                <a href="moblogin.html" class="btn-primary">Get Started</a>
-                <a href="#how-it-works" class="btn-secondary">Learn More</a>
+            <div class="hero-text">
+                <h1>Recharge Made Simple</h1>
+                <p>Instant mobile recharges for all operators with exciting cashback offers and secure payments</p>
+                <div class="hero-buttons">
+                    <a href="moblogin.html" class="btn-primary">Get Started</a>
+                    <a href="#how-it-works" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://img.freepik.com/free-vector/mobile-payment-illustration_23-2148571646.jpg" alt="Mobile Recharge" class="floating">
             </div>
         </div>
     </section>
@@ -906,26 +969,37 @@
 
     <!-- How It Works Section -->
     <section class="how-it-works" id="how-it-works">
-        <div class="section-title">
+        <div class="section-title scroll-reveal">
             <h2>How It Works</h2>
             <p>Recharge in just 3 simple steps</p>
         </div>
-        <div class="steps">
-            <div class="step">
+        <div class="steps-container">
+            <div class="steps-image">
+                <img src="https://img.freepik.com/free-vector/mobile-phone-recharge-concept-illustration_114360-7870.jpg" alt="How it works" class="floating">
+            </div>
+            <div class="steps">
+            <div class="step scroll-reveal-left">
                 <div class="step-number">1</div>
-                <h3>Enter Details</h3>
-                <p>Enter your mobile number and select your operator</p>
+                <div class="step-content">
+                    <h3>Enter Details</h3>
+                    <p>Enter your mobile number and select your operator</p>
+                </div>
             </div>
-            <div class="step">
+            <div class="step scroll-reveal-left">
                 <div class="step-number">2</div>
-                <h3>Choose Plan</h3>
-                <p>Select your preferred recharge plan or amount</p>
+                <div class="step-content">
+                    <h3>Choose Plan</h3>
+                    <p>Select your preferred recharge plan or amount</p>
+                </div>
             </div>
-            <div class="step">
+            <div class="step scroll-reveal-left">
                 <div class="step-number">3</div>
-                <h3>Pay & Recharge</h3>
-                <p>Complete payment and get instant recharge confirmation</p>
+                <div class="step-content">
+                    <h3>Pay & Recharge</h3>
+                    <p>Complete payment and get instant recharge confirmation</p>
+                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -1306,8 +1380,40 @@
         });
 
         console.log('🚀 All animations loaded successfully!');
-    </script>
-        console.log('🚀 All animations loaded successfully!');
-    </script>
-</body>
+
+        // ===== CHECK LOGIN STATUS =====
+        function checkLoginStatus() {
+            const authBtn = document.getElementById('authBtn');
+            const dashboardBtn = document.getElementById('dashboardBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const userRole = localStorage.getItem('userRole');
+            
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                if (authBtn) authBtn.style.display = 'none';
+                if (dashboardBtn) {
+                    dashboardBtn.style.display = 'inline-block';
+                    if (userRole === 'admin') {
+                        dashboardBtn.href = 'admin-dashboard.html';
+                        dashboardBtn.textContent = 'Admin Dashboard';
+                    } else {
+                        dashboardBtn.href = 'customer-dashboard.html';
+                        dashboardBtn.textContent = 'Dashboard';
+                    }
+                }
+                if (logoutBtn) logoutBtn.style.display = 'inline-block';
+            }
+        }
+
+        function handleLogout() {
+            if(confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('userMobile');
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userRole');
+                location.reload();
+            }
+        }
+
+        checkLoginStatus();
+    </script></body>
 </html>

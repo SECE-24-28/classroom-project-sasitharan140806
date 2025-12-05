@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Recharge - Create Account</title>
+    <title>Create Account - Mobile Recharge</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,7 +14,9 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: linear-gradient(-45deg, #11998e, #38ef7d, #0575e6, #00f2fe);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,25 +24,82 @@
             padding: 20px;
         }
 
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
         .register-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.1);
             overflow: hidden;
-            max-width: 900px;
+            max-width: 1200px;
             width: 100%;
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            animation: slideInRight 0.8s ease;
         }
 
         .register-left {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: rgba(17, 153, 142, 0.2);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
             padding: 50px 40px;
-            flex: 1;
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://img.freepik.com/free-vector/secure-login-concept-illustration_114360-1434.jpg') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .register-left > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .register-image {
+            margin-bottom: 30px;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .register-image img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
         }
 
         .register-left h1 {
@@ -64,35 +123,51 @@
             padding-left: 30px;
             position: relative;
             font-size: 14px;
+            animation: slideInLeft 0.6s ease backwards;
         }
 
+        .benefits li:nth-child(1) { animation-delay: 0.1s; }
+        .benefits li:nth-child(2) { animation-delay: 0.2s; }
+        .benefits li:nth-child(3) { animation-delay: 0.3s; }
+        .benefits li:nth-child(4) { animation-delay: 0.4s; }
+
         .benefits li:before {
-            content: "\f005";
+            content: "\f058";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
             left: 0;
             background: rgba(255, 255, 255, 0.2);
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .benefits li:hover:before {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.2);
         }
 
         .register-right {
             padding: 50px 40px;
-            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+            max-height: 100vh;
         }
 
         .register-header {
             text-align: center;
             margin-bottom: 30px;
+            animation: slideInRight 0.8s ease;
         }
 
         .register-header h2 {
@@ -106,6 +181,12 @@
             font-size: 14px;
         }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
         .form-group {
             margin-bottom: 18px;
         }
@@ -114,7 +195,7 @@
             display: block;
             color: #333;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-size: 14px;
         }
 
@@ -124,11 +205,12 @@
 
         .input-wrapper input {
             width: 100%;
-            padding: 12px 15px 12px 45px;
+            padding: 12px 15px 12px 40px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
             transition: all 0.3s;
+            background: white;
         }
 
         .input-wrapper input:focus {
@@ -139,36 +221,44 @@
 
         .input-icon {
             position: absolute;
-            left: 15px;
+            left: 12px;
             top: 50%;
             transform: translateY(-50%);
             color: #11998e;
             font-size: 16px;
         }
 
-        .terms {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            color: #666;
-        }
-
-        .terms input[type="checkbox"] {
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
             cursor: pointer;
-            width: 16px;
-            height: 16px;
-            margin-top: 2px;
+            color: #999;
+            background: none;
+            border: none;
+            font-size: 18px;
         }
 
-        .terms a {
-            color: #11998e;
-            text-decoration: none;
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
-        .terms a:hover {
-            text-decoration: underline;
+        .form-checkbox input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #11998e;
+        }
+
+        .form-checkbox label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+            color: #666;
         }
 
         .register-button {
@@ -182,12 +272,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(17, 153, 142, 0.3);
+            margin-bottom: 15px;
         }
 
         .register-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(17, 153, 142, 0.4);
+            box-shadow: 0 8px 25px rgba(17, 153, 142, 0.5);
         }
 
         .register-button:active {
@@ -196,46 +287,33 @@
 
         .login-link {
             text-align: center;
-            font-size: 14px;
             color: #666;
+            font-size: 14px;
         }
 
         .login-link a {
             color: #11998e;
             text-decoration: none;
             font-weight: 600;
+            transition: all 0.3s;
         }
 
         .login-link a:hover {
+            color: #0a6b62;
             text-decoration: underline;
         }
 
-        .password-strength {
-            height: 4px;
-            background: #e0e0e0;
-            border-radius: 2px;
-            margin-top: 8px;
-            overflow: hidden;
-        }
-
-        .password-strength-bar {
-            height: 100%;
-            width: 0%;
-            transition: all 0.3s;
-            border-radius: 2px;
-        }
-
-        .strength-weak { background: #ff4444; width: 33%; }
-        .strength-medium { background: #ffbb33; width: 66%; }
-        .strength-strong { background: #00C851; width: 100%; }
-
         @media (max-width: 768px) {
             .register-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
             }
 
             .register-left {
                 padding: 30px 25px;
+            }
+
+            .register-image img {
+                max-width: 250px;
             }
 
             .register-left h1 {
@@ -249,20 +327,26 @@
             .register-header h2 {
                 font-size: 24px;
             }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="register-container">
         <div class="register-left">
-            <h1>Join Mobile Recharge</h1>
-            <p>Create your account and start enjoying instant recharge benefits</p>
+            <div class="register-image">
+                <img src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7895.jpg" alt="Create Account">
+            </div>
+            <h1>Join Us Today</h1>
+            <p>Create your account and start enjoying instant recharges</p>
             <ul class="benefits">
-                <li>Welcome bonus on first recharge</li>
-                <li>Exclusive cashback offers</li>
-                <li>Faster checkout with saved details</li>
-                <li>Track all your transactions</li>
-                <li>24/7 customer support</li>
+                <li><strong>Fast Registration</strong> - Create account in seconds</li>
+                <li><strong>Secure & Safe</strong> - Your data is encrypted</li>
+                <li><strong>Instant Recharge</strong> - Get active immediately</li>
+                <li><strong>24/7 Support</strong> - We're always here to help</li>
             </ul>
         </div>
 
@@ -273,19 +357,20 @@
             </div>
 
             <form id="registerForm">
-                <div class="form-group">
-                    <label for="fullname">Full Name</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-user input-icon"></i>
-                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required>
+                        </div>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="mobile">Mobile Number</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-phone input-icon"></i>
-                        <input type="tel" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required>
+                        </div>
                     </div>
                 </div>
 
@@ -298,30 +383,44 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="mobile">Mobile Number</label>
                     <div class="input-wrapper">
-                        <i class="fas fa-key input-icon"></i>
-                        <input type="password" id="password" name="password" placeholder="Create a strong password" required minlength="6">
-                    </div>
-                    <div class="password-strength">
-                        <div class="password-strength-bar" id="strengthBar"></div>
+                        <i class="fas fa-mobile-alt input-icon"></i>
+                        <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" required>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-check-circle input-icon"></i>
-                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="password" name="password" placeholder="Create password" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="terms">
+                <div class="form-checkbox">
                     <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+                    <label for="terms">I agree to the Terms & Conditions</label>
                 </div>
 
-                <button type="submit" class="register-button">Create Account</button>
+                <button type="submit" class="register-button">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
 
                 <div class="login-link">
                     Already have an account? <a href="moblogin.html">Login here</a>
@@ -331,60 +430,37 @@
     </div>
 
     <script>
-        const passwordInput = document.getElementById('password');
-        const strengthBar = document.getElementById('strengthBar');
-
-        passwordInput.addEventListener('input', function() {
-            const password = this.value;
-            let strength = 0;
-
-            if (password.length >= 6) strength++;
-            if (password.length >= 10) strength++;
-            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
-            if (/[0-9]/.test(password)) strength++;
-            if (/[^a-zA-Z0-9]/.test(password)) strength++;
-
-            strengthBar.className = 'password-strength-bar';
-            if (strength <= 2) {
-                strengthBar.classList.add('strength-weak');
-            } else if (strength <= 4) {
-                strengthBar.classList.add('strength-medium');
+        function togglePassword(id) {
+            const field = document.getElementById(id);
+            const icon = event.target.closest('button').querySelector('i');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
             } else {
-                strengthBar.classList.add('strength-strong');
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
             }
-        });
+        }
 
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const fullname = document.getElementById('fullname').value;
-            const mobile = document.getElementById('mobile').value;
-            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-            const terms = document.getElementById('terms').checked;
-
-            // Validate mobile number
-            if (!/^[0-9]{10}$/.test(mobile)) {
-                alert('Please enter a valid 10-digit mobile number');
-                return;
-            }
-
-            // Validate password match
+            
             if (password !== confirmPassword) {
                 alert('Passwords do not match!');
                 return;
             }
-
-            // Validate terms
-            if (!terms) {
-                alert('Please agree to the Terms & Conditions');
-                return;
-            }
-
-            // Success
-            alert('Account created successfully!\n\nWelcome ' + fullname + '!\n\nRedirecting to login...');
-            // window.location.href = 'moblogin.html';
+            
+            alert('Account created successfully! Redirecting to login...');
+            localStorage.setItem('userEmail', document.getElementById('email').value);
+            localStorage.setItem('userFirstName', document.getElementById('firstName').value);
+            setTimeout(() => {
+                window.location.href = 'moblogin.html';
+            }, 1500);
         });
     </script>
 </body>

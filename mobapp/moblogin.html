@@ -37,10 +37,10 @@
             border-radius: 25px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.1);
             overflow: hidden;
-            max-width: 900px;
+            max-width: 1100px;
             width: 100%;
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
 
         .login-left {
@@ -48,11 +48,47 @@
             backdrop-filter: blur(10px);
             border-right: 1px solid rgba(255, 255, 255, 0.2);
             padding: 50px 40px;
-            flex: 1;
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://img.freepik.com/free-vector/mobile-recharge-concept-illustration_114360-5654.jpg') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .login-left > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-image {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .login-image img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         .login-left h1 {
@@ -273,13 +309,158 @@
             transform: translateY(0);
         }
 
+        /* Role Selection Modal */
+        .role-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .role-modal.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .role-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .role-container h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .role-container p {
+            color: #666;
+            margin-bottom: 35px;
+            font-size: 16px;
+        }
+
+        .role-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .role-btn {
+            padding: 30px 20px;
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .role-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .role-btn i {
+            display: block;
+            font-size: 40px;
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+
+        .role-btn.admin {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .role-btn.admin i {
+            color: #667eea;
+        }
+
+        .role-btn.admin:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .role-btn.admin:hover i {
+            color: white;
+        }
+
+        .role-btn.customer {
+            border-color: #38ef7d;
+            background: linear-gradient(135deg, rgba(56, 239, 125, 0.1) 0%, rgba(17, 153, 142, 0.1) 100%);
+        }
+
+        .role-btn.customer i {
+            color: #38ef7d;
+        }
+
+        .role-btn.customer:hover {
+            background: linear-gradient(135deg, #38ef7d 0%, #11998e 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .role-btn.customer:hover i {
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .role-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .role-container {
+                padding: 30px 20px;
+            }
+
+            .role-container h2 {
+                font-size: 24px;
+            }
+        }
+
         @media (max-width: 768px) {
             .login-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
             }
 
             .login-left {
                 padding: 30px 25px;
+            }
+
+            .login-image img {
+                max-width: 250px;
             }
 
             .login-left h1 {
@@ -299,6 +480,9 @@
 <body>
     <div class="login-container">
         <div class="login-left">
+            <div class="login-image">
+                <img src="https://img.freepik.com/free-vector/online-payment-concept-illustration_114360-5764.jpg" alt="Mobile Recharge">
+            </div>
             <h1>Mobile Recharge</h1>
             <p>Quick, easy, and secure mobile recharge for all operators</p>
             <ul class="features">
@@ -350,27 +534,87 @@
         </div>
     </div>
 
+    <!-- Role Selection Modal -->
+    <div class="role-modal" id="roleModal">
+        <div class="role-container">
+            <h2>Select Your Role</h2>
+            <p>Choose whether you are an Admin or a Customer</p>
+            <div class="role-buttons">
+                <button class="role-btn admin" onclick="selectRole('admin')">
+                    <i class="fas fa-user-shield"></i>
+                    Admin
+                </button>
+                <button class="role-btn customer" onclick="selectRole('customer')">
+                    <i class="fas fa-user"></i>
+                    Customer
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        let tempLoginData = {};
+
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const mobile = document.getElementById('mobile').value;
             const password = document.getElementById('password').value;
-            const remember = document.getElementById('remember').checked;
 
             // Basic validation
             if (mobile && password) {
-                alert('Login successful!\nUser: ' + mobile + '\nRemember me: ' + remember);
-                // Here you would typically send the data to a server
-                // window.location.href = 'dashboard.html';
+                // Store temporary login data
+                tempLoginData = {
+                    mobile: mobile,
+                    email: mobile,
+                    password: password
+                };
+
+                // Show role selection modal
+                document.getElementById('roleModal').classList.add('show');
             } else {
                 alert('Please fill in all fields');
             }
         });
 
+        function selectRole(role) {
+            // Store user data with selected role
+            localStorage.setItem('userMobile', tempLoginData.mobile);
+            localStorage.setItem('userEmail', tempLoginData.email);
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userRole', role);
+            
+            // Hide modal
+            document.getElementById('roleModal').classList.remove('show');
+
+            // Show success message
+            alert(`Login successful as ${role.toUpperCase()}!`);
+
+            // Redirect based on role
+            setTimeout(() => {
+                if (role === 'admin') {
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    window.location.href = 'customer-dashboard.html';
+                }
+            }, 800);
+        }
+
         function goToRegister() {
             window.location.href = 'register.html';
         }
+
+        // Check if already logged in - redirect to appropriate dashboard
+        window.addEventListener('load', function() {
+            if(localStorage.getItem('isLoggedIn') === 'true') {
+                const role = localStorage.getItem('userRole');
+                if (role === 'admin') {
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    window.location.href = 'customer-dashboard.html';
+                }
+            }
+        });
     </script>
 </body>
 </html>
