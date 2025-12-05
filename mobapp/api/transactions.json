@@ -1,0 +1,113 @@
+{
+  "transactions": [
+    {
+      "id": "TXN001234",
+      "userId": 2,
+      "userName": "Sasitharan K",
+      "mobile": "9876543211",
+      "operator": "Jio",
+      "planId": "jio_3",
+      "amount": 299,
+      "status": "success",
+      "paymentMethod": "UPI",
+      "transactionDate": "2024-12-05T14:30:00Z",
+      "cashback": 15
+    },
+    {
+      "id": "TXN001233",
+      "userId": 3,
+      "userName": "Priya Sharma",
+      "mobile": "9876543212",
+      "operator": "Airtel",
+      "planId": "airtel_3",
+      "amount": 319,
+      "status": "success",
+      "paymentMethod": "Debit Card",
+      "transactionDate": "2024-12-05T13:15:00Z",
+      "cashback": 16
+    },
+    {
+      "id": "TXN001232",
+      "userId": 2,
+      "userName": "Sasitharan K",
+      "mobile": "9876543211",
+      "operator": "Vi",
+      "planId": "vi_2",
+      "amount": 299,
+      "status": "pending",
+      "paymentMethod": "Wallet",
+      "transactionDate": "2024-12-05T12:45:00Z",
+      "cashback": 0
+    },
+    {
+      "id": "TXN001231",
+      "userId": 3,
+      "userName": "Priya Sharma",
+      "mobile": "9876543212",
+      "operator": "BSNL",
+      "planId": "bsnl_2",
+      "amount": 199,
+      "status": "success",
+      "paymentMethod": "UPI",
+      "transactionDate": "2024-12-05T11:20:00Z",
+      "cashback": 10
+    },
+    {
+      "id": "TXN001230",
+      "userId": 2,
+      "userName": "Sasitharan K",
+      "mobile": "9876543211",
+      "operator": "Jio",
+      "planId": "jio_4",
+      "amount": 666,
+      "status": "failed",
+      "paymentMethod": "Credit Card",
+      "transactionDate": "2024-12-05T10:05:00Z",
+      "cashback": 0,
+      "failureReason": "Payment gateway error"
+    },
+    {
+      "id": "TXN001229",
+      "userId": 3,
+      "userName": "Priya Sharma",
+      "mobile": "9876543212",
+      "operator": "Airtel",
+      "planId": "airtel_2",
+      "amount": 179,
+      "status": "success",
+      "paymentMethod": "UPI",
+      "transactionDate": "2024-12-04T17:30:00Z",
+      "cashback": 9
+    },
+    {
+      "id": "TXN001228",
+      "userId": 2,
+      "userName": "Sasitharan K",
+      "mobile": "9876543211",
+      "operator": "Vi",
+      "planId": "vi_1",
+      "amount": 58,
+      "status": "success",
+      "paymentMethod": "Wallet",
+      "transactionDate": "2024-12-03T10:45:00Z",
+      "cashback": 3
+    }
+  ],
+  "statistics": {
+    "totalRevenue": 45230,
+    "totalUsers": 2450,
+    "totalTransactions": 8920,
+    "successRate": 98.5,
+    "activeUsers": 1280,
+    "avgTransaction": 507,
+    "monthlyRevenue": [5000, 7200, 6500, 8900, 7600, 9200, 8100],
+    "operatorDistribution": {
+      "Jio": 32,
+      "Airtel": 25,
+      "Vi": 20,
+      "BSNL": 15,
+      "Aircel": 5,
+      "MTNL": 3
+    }
+  }
+}

@@ -205,6 +205,25 @@
             box-shadow: 0 5px 15px rgba(204, 0, 0, 0.4);
         }
 
+        .view-details-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #cc0000;
+            border: 2px solid #cc0000;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .view-details-btn:hover {
+            background: #cc0000;
+            color: white;
+        }
+
         .plan-type-badge {
             display: inline-block;
             padding: 5px 12px;
@@ -285,6 +304,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-play-circle"></i> Airtel Xstream</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_265')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('265', '28 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -312,6 +332,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-tv"></i> Free Hellotunes</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_299')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('299', '28 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -325,6 +346,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-tv"></i> Disney+ Hotstar Mobile</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_359')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('359', '28 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -338,6 +360,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-play-circle"></i> Airtel Xstream Premium</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_455')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('455', '56 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -351,6 +374,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-music"></i> Wynk Music Premium</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_549')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('549', '56 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -365,6 +389,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-play-circle"></i> Airtel Thanks Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_699')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('699', '84 Days', 'Long Validity')">Recharge Now</button>
             </div>
 
@@ -378,6 +403,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-tv"></i> OTT Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_839')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('839', '84 Days', 'Long Validity')">Recharge Now</button>
             </div>
 
@@ -391,6 +417,7 @@
                     <li><i class="fas fa-comment"></i> 3600 SMS</li>
                     <li><i class="fas fa-play-circle"></i> Airtel Thanks Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_1799')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('1799', '365 Days', 'Annual')">Recharge Now</button>
             </div>
 
@@ -404,6 +431,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-tv"></i> Amazon Prime + Disney+ Hotstar</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_2999')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('2999', '365 Days', 'Annual Premium')">Recharge Now</button>
             </div>
 
@@ -441,6 +469,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-tv"></i> Premium OTT Bundle</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_3359')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('3359', '365 Days', 'Premium Annual')">Recharge Now</button>
             </div>
 
@@ -454,6 +483,7 @@
                     <li><i class="fas fa-comment"></i> Unlimited SMS</li>
                     <li><i class="fas fa-crown"></i> All Premium OTT Apps</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_9999')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('9999', '365 Days', 'Super Premium')">Recharge Now</button>
             </div>
 
@@ -467,6 +497,7 @@
                     <li><i class="fas fa-comment"></i> Unlimited SMS</li>
                     <li><i class="fas fa-gem"></i> Platinum Priority Support</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_14999')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('14999', '365 Days', 'Platinum')">Recharge Now</button>
             </div>
 
@@ -480,6 +511,7 @@
                     <li><i class="fas fa-headset"></i> Dedicated Relationship Manager</li>
                     <li><i class="fas fa-star"></i> Exclusive Airtel Black Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('airtel_35000')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('35000', '365 Days', 'Diamond Elite')">Recharge Now</button>
             </div>
         </div>
@@ -504,6 +536,10 @@
                     }
                 }
             });
+        }
+
+        function viewDetails(planId) {
+            window.location.href = `plan-details.html?planId=${planId}&operator=Airtel`;
         }
 
         function selectPlan(price, validity, planType) {

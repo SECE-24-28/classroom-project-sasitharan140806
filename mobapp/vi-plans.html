@@ -34,6 +34,8 @@
         .plan-benefits i { color: #e60000; font-size: 16px; }
         .recharge-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #e60000 0%, #ff4444 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
         .recharge-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4); }
+        .view-details-btn { width: 100%; padding: 12px; background: white; color: #e60000; border: 2px solid #e60000; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; margin-bottom: 10px; }
+        .view-details-btn:hover { background: #e60000; color: white; }
         .plan-type-badge { display: inline-block; padding: 5px 12px; background: #ff9800; color: white; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
         .popular-badge { position: absolute; top: -10px; right: 20px; background: #4caf50; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         @media (max-width: 768px) { .plans-grid { grid-template-columns: 1fr; } .operator-info h1 { font-size: 24px; } .header-content { flex-direction: column; gap: 20px; } }
@@ -75,6 +77,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-play-circle"></i> Vi Movies & TV</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_249')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('249', '28 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -101,6 +104,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-music"></i> Vi Music</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_319')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('319', '28 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -114,6 +118,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-tv"></i> Sony Liv + Vi Movies</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_399')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('399', '28 Days', 'Premium')">Recharge Now</button>
             </div>
 
@@ -127,6 +132,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-play-circle"></i> Binge All Night</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_499')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('499', '56 Days', 'Best Value')">Recharge Now</button>
             </div>
 
@@ -140,6 +146,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-play-circle"></i> Vi Premium Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_599')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('599', '56 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -153,6 +160,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-play-circle"></i> Weekend Data Rollover</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_719')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('719', '84 Days', 'Long Validity')">Recharge Now</button>
             </div>
 
@@ -166,6 +174,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-tv"></i> OTT Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_859')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('859', '84 Days', 'Long Validity')">Recharge Now</button>
             </div>
 
@@ -179,6 +188,7 @@
                     <li><i class="fas fa-comment"></i> 3600 SMS</li>
                     <li><i class="fas fa-play-circle"></i> Vi Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_1799')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('1799', '365 Days', 'Annual')">Recharge Now</button>
             </div>
 
@@ -192,6 +202,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-tv"></i> Premium OTT Bundle</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_3099')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('3099', '365 Days', 'Annual Premium')">Recharge Now</button>
             </div>
 
@@ -229,6 +240,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-crown"></i> Gold Membership Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_4999')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('4999', '365 Days', 'Gold')">Recharge Now</button>
             </div>
 
@@ -242,6 +254,7 @@
                     <li><i class="fas fa-headset"></i> Priority Customer Care</li>
                     <li><i class="fas fa-tv"></i> All Premium OTT Apps</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_11499')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('11499', '365 Days', 'Platinum')">Recharge Now</button>
             </div>
 
@@ -255,6 +268,7 @@
                     <li><i class="fas fa-gem"></i> Dedicated Account Manager</li>
                     <li><i class="fas fa-star"></i> Exclusive Vi Hero Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('vi_35000')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('35000', '365 Days', 'Diamond Elite')">Recharge Now</button>
             </div>
         </div>
@@ -270,6 +284,9 @@
                 if (type === 'all') { card.style.display = 'block'; }
                 else { card.style.display = card.dataset.type === type ? 'block' : 'none'; }
             });
+        }
+        function viewDetails(planId) {
+            window.location.href = `plan-details.html?planId=${planId}&operator=Vi`;
         }
         function selectPlan(price, validity, planType) {
             localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'Vodafone Idea (Vi)', price, validity, planType }));

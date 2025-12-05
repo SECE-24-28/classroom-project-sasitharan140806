@@ -572,10 +572,11 @@
         </div>
     </div>
 
+    <script src="js/mockAPI.js"></script>
     <script>
         // Revenue Chart
         const revenueCtx = document.getElementById('revenueChart').getContext('2d');
-        new Chart(revenueCtx, {
+        const revenueChart = new Chart(revenueCtx, {
             type: 'bar',
             data: {
                 labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -617,7 +618,7 @@
 
         // Operator Distribution Chart
         const operatorCtx = document.getElementById('operatorChart').getContext('2d');
-        new Chart(operatorCtx, {
+        const operatorChart = new Chart(operatorCtx, {
             type: 'doughnut',
             data: {
                 labels: ['Jio', 'Airtel', 'Vi', 'BSNL', 'Aircel', 'MTNL'],
@@ -650,6 +651,69 @@
                 }
             }
         });
+
+        // Load real-time admin data from Mock API
+        async function loadAdminData() {
+            try {
+                // Get admin statistics
+                const statsResult = await mockAPI.getStatistics();
+                
+                if (statsResult.success) {
+                    const stats = statsResult.data;
+                    
+                    // Update stat cards with real data
+                    document.getElementById('totalRevenue').textContent = `₹${stats.totalRevenue.toLocaleString()}`;
+                    document.getElementById('totalUsers').textContent = stats.totalUsers.toLocaleString();
+                    document.getElementById('totalTransactions').textContent = stats.totalTransactions.toLocaleString();
+                    document.getElementById('successRate').textContent = `${stats.successRate}%`;
+                    document.getElementById('activeUsers').textContent = stats.activeUsers.toLocaleString();
+                    document.getElementById('avgTransaction').textContent = `₹${stats.avgTransaction}`;
+                    
+                    // Update revenue chart with real data
+                    revenueChart.data.datasets[0].data = stats.monthlyRevenue;
+                    revenueChart.update();
+                    
+                    // Update operator distribution chart
+                    const operators = Object.keys(stats.operatorDistribution);
+                    const percentages = Object.values(stats.operatorDistribution);
+                    operatorChart.data.labels = operators;
+                    operatorChart.data.datasets[0].data = percentages;
+                    operatorChart.update();
+                }
+                
+                // Get recent transactions
+                const txnResult = await mockAPI.getTransactions(null, 10);
+                
+                if (txnResult.success) {
+                    const tbody = document.querySelector('.transaction-table tbody');
+                    tbody.innerHTML = '';
+                    
+                    txnResult.data.forEach(txn => {
+                        const statusClass = txn.status === 'success' ? 'success' : txn.status === 'failed' ? 'failed' : 'pending';
+                        const date = new Date(txn.transactionDate);
+                        
+                        tbody.innerHTML += `
+                            <tr>
+                                <td>${txn.id}</td>
+                                <td>${txn.userName}</td>
+                                <td>${txn.mobile}</td>
+                                <td>${txn.operator}</td>
+                                <td>₹${txn.amount}</td>
+                                <td><span class="status-badge ${statusClass}">${txn.status}</span></td>
+                                <td>${date.toLocaleDateString()} ${date.toLocaleTimeString()}</td>
+                            </tr>
+                        `;
+                    });
+                }
+                
+                console.log('✅ Admin dashboard data loaded from Mock API');
+            } catch (error) {
+                console.error('❌ Error loading admin data:', error);
+            }
+        }
+        
+        // Load data after API is initialized (wait 1.5 seconds)
+        setTimeout(loadAdminData, 1500);
 
         function showSection(section) {
             // Update menu items

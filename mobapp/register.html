@@ -445,23 +445,52 @@
             }
         }
 
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
             
             if (password !== confirmPassword) {
-                alert('Passwords do not match!');
+                alert('❌ Passwords do not match!');
                 return;
             }
             
-            alert('Account created successfully! Redirecting to login...');
-            localStorage.setItem('userEmail', document.getElementById('email').value);
-            localStorage.setItem('userFirstName', document.getElementById('firstName').value);
-            setTimeout(() => {
-                window.location.href = 'moblogin.html';
-            }, 1500);
+            // Show loading state
+            submitBtn.textContent = 'Creating Account...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Prepare registration data
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    mobile: document.getElementById('mobile').value,
+                    password: password
+                };
+                
+                // Call Mock API for registration
+                const result = await mockAPI.register(formData);
+                
+                if (result.success) {
+                    alert('✅ Account created successfully! Redirecting to login...');
+                    setTimeout(() => {
+                        window.location.href = 'moblogin.html';
+                    }, 1000);
+                } else {
+                    alert('❌ ' + (result.message || 'Registration failed. Please try again.'));
+                    submitBtn.textContent = 'Create Account';
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('❌ Registration failed. Please make sure Mock API is loaded.');
+                submitBtn.textContent = 'Create Account';
+                submitBtn.disabled = false;
+            }
         });
     </script>
+    <script src="js/mockAPI.js"></script>
 </body>
 </html>

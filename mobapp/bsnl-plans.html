@@ -34,6 +34,8 @@
         .plan-benefits i { color: #f39200; font-size: 16px; }
         .recharge-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #f39200 0%, #ffb347 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
         .recharge-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(243, 146, 0, 0.4); }
+        .view-details-btn { width: 100%; padding: 12px; background: white; color: #f39200; border: 2px solid #f39200; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; margin-bottom: 10px; }
+        .view-details-btn:hover { background: #f39200; color: white; }
         .plan-type-badge { display: inline-block; padding: 5px 12px; background: #4caf50; color: white; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
         .popular-badge { position: absolute; top: -10px; right: 20px; background: #4caf50; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         @media (max-width: 768px) { .plans-grid { grid-template-columns: 1fr; } .operator-info h1 { font-size: 24px; } .header-content { flex-direction: column; gap: 20px; } }
@@ -75,6 +77,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-play-circle"></i> BSNL Tunes</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_187')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('187', '28 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -114,6 +117,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-music"></i> Free BSNL Tunes</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_298')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('298', '45 Days', 'Unlimited')">Recharge Now</button>
             </div>
 
@@ -127,6 +131,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-shield-alt"></i> Data Rollover</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_399')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('399', '70 Days', 'Popular')">Recharge Now</button>
             </div>
 
@@ -140,6 +145,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-phone"></i> Free Roaming</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_485')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('485', '84 Days', 'Value Pack')">Recharge Now</button>
             </div>
 
@@ -153,6 +159,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-globe"></i> National Roaming</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_666')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('666', '129 Days', 'Long Validity')">Recharge Now</button>
             </div>
 
@@ -166,6 +173,7 @@
                     <li><i class="fas fa-comment"></i> 3600 SMS</li>
                     <li><i class="fas fa-phone"></i> Free Roaming</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_1498')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('1498', '365 Days', 'Annual')">Recharge Now</button>
             </div>
 
@@ -179,6 +187,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-music"></i> BSNL Tunes Premium</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_2099')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('2099', '365 Days', 'Annual Pack')">Recharge Now</button>
             </div>
 
@@ -192,6 +201,7 @@
                     <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
                     <li><i class="fas fa-shield-alt"></i> Premium Support</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_2999')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('2999', '365 Days', 'Annual Unlimited')">Recharge Now</button>
             </div>
 
@@ -229,6 +239,7 @@
                     <li><i class="fas fa-headset"></i> Priority Support</li>
                     <li><i class="fas fa-globe"></i> Free Roaming Nationwide</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_5999')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('5999', '365 Days', 'Premium')">Recharge Now</button>
             </div>
 
@@ -242,6 +253,7 @@
                     <li><i class="fas fa-crown"></i> VIP Priority Network</li>
                     <li><i class="fas fa-headset"></i> Dedicated Support Manager</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_12999')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('12999', '365 Days', 'Platinum')">Recharge Now</button>
             </div>
 
@@ -255,6 +267,7 @@
                     <li><i class="fas fa-user-shield"></i> Personal Account Manager</li>
                     <li><i class="fas fa-star"></i> Exclusive BSNL Elite Benefits</li>
                 </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_35000')">📋 View Details</button>
                 <button class="recharge-btn" onclick="selectPlan('35000', '365 Days', 'Diamond Elite')">Recharge Now</button>
             </div>
         </div>
@@ -270,6 +283,9 @@
                 if (type === 'all') { card.style.display = 'block'; }
                 else { card.style.display = card.dataset.type === type ? 'block' : 'none'; }
             });
+        }
+        function viewDetails(planId) {
+            window.location.href = `plan-details.html?planId=${planId}&operator=BSNL`;
         }
         function selectPlan(price, validity, planType) {
             localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'BSNL', price, validity, planType }));

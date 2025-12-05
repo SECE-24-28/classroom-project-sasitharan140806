@@ -455,6 +455,7 @@
         </div>
     </div>
 
+    <script src="js/mockAPI.js"></script>
     <script>
         // Monthly Spending Chart
         const spendingCtx = document.getElementById('spendingChart').getContext('2d');
@@ -502,7 +503,7 @@
 
         // Operator Distribution Chart
         const operatorCtx = document.getElementById('operatorChart').getContext('2d');
-        new Chart(operatorCtx, {
+        const operatorChart = new Chart(operatorCtx, {
             type: 'doughnut',
             data: {
                 labels: ['Jio', 'Airtel', 'Vi', 'BSNL', 'Others'],
@@ -534,6 +535,66 @@
                 }
             }
         });
+
+        // Load real-time data from Mock API
+        async function loadDashboardData() {
+            try {
+                const statsResult = await mockAPI.getUserStatistics(userId);
+                
+                if (statsResult.success) {
+                    const stats = statsResult.data;
+                    
+                    // Update stat cards with real data
+                    document.getElementById('totalSpent').textContent = `₹${stats.totalSpent.toLocaleString()}`;
+                    document.getElementById('totalRecharges').textContent = stats.totalRecharges;
+                    document.getElementById('totalCashback').textContent = `₹${stats.totalCashback}`;
+                    document.getElementById('activePlans').textContent = stats.activePlans;
+                    
+                    // Update spending chart with real data
+                    spendingChart.data.datasets[0].data = stats.monthlySpending;
+                    spendingChart.update();
+                    
+                    // Update operator distribution chart
+                    const operators = Object.keys(stats.operatorDistribution);
+                    const counts = Object.values(stats.operatorDistribution);
+                    if (operators.length > 0) {
+                        operatorChart.data.labels = operators;
+                        operatorChart.data.datasets[0].data = counts;
+                        operatorChart.update();
+                    }
+                    
+                    // Update recent recharges with real data
+                    const rechargesList = document.querySelector('.recharge-item').parentElement;
+                    rechargesList.innerHTML = '';
+                    
+                    stats.recentTransactions.forEach(txn => {
+                        const statusClass = txn.status === 'success' ? 'success' : txn.status === 'failed' ? 'failed' : 'pending';
+                        const statusIcon = txn.status === 'success' ? '✓' : txn.status === 'failed' ? '✗' : '⏳';
+                        const date = new Date(txn.transactionDate);
+                        
+                        rechargesList.innerHTML += `
+                            <div class="recharge-item">
+                                <div class="recharge-info">
+                                    <div class="operator-name">${txn.operator}</div>
+                                    <div class="recharge-date">${date.toLocaleDateString()} ${date.toLocaleTimeString()}</div>
+                                </div>
+                                <div class="recharge-amount-status">
+                                    <div class="recharge-amount">₹${txn.amount}</div>
+                                    <span class="status-badge ${statusClass}">${statusIcon} ${txn.status}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    console.log('✅ Dashboard data loaded from Mock API');
+                }
+            } catch (error) {
+                console.error('❌ Error loading dashboard data:', error);
+            }
+        }
+        
+        // Load data after API is initialized (wait 1.5 seconds)
+        setTimeout(loadDashboardData, 1500);
 
         function goToHome() {
             window.location.href = 'landing.html';
