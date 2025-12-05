@@ -17,6 +17,128 @@
             overflow-x: hidden;
         }
 
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scroll Reveal Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Glow Effect */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(17, 153, 142, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(17, 153, 142, 0.8), 0 0 60px rgba(17, 153, 142, 0.6); }
+        }
+
+        /* Bounce Animation */
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* Ripple Effect */
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Pulse Ring */
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* Slide Right */
+        @keyframes slideRight {
+            0%, 100% { transform: translateX(0); opacity: 0.5; }
+            50% { transform: translateX(10px); opacity: 1; }
+        }
+
         /* Header/Navigation */
         header {
             background: rgba(255, 255, 255, 0.95);
@@ -45,6 +167,18 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .logo i {
+            display: inline-block;
+            animation: float 2s ease-in-out infinite;
         }
 
         .nav-links {
@@ -216,13 +350,35 @@
             padding: 40px 30px;
             border-radius: 15px;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(17, 153, 142, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(17, 153, 142, 0.2);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(360deg);
+            animation: pulse 1s ease-in-out;
         }
 
         .feature-icon {
@@ -236,6 +392,19 @@
             justify-content: center;
             font-size: 35px;
             color: white;
+            transition: all 0.6s ease;
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            opacity: 0;
+            animation: ripple 2s infinite;
         }
 
         .feature-card h3 {
@@ -269,6 +438,25 @@
             flex: 1;
             min-width: 200px;
             position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 30px;
+            font-size: 30px;
+            color: #11998e;
+            animation: slideRight 1.5s infinite;
+        }
+
+        .step:last-child::after {
+            display: none;
         }
 
         .step-number {
@@ -283,6 +471,23 @@
             font-size: 28px;
             font-weight: bold;
             color: white;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .step:hover .step-number {
+            transform: rotate(360deg) scale(1.2);
+            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.5);
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #11998e;
+            animation: pulse-ring 2s infinite;
         }
 
         .step h3 {
@@ -315,13 +520,39 @@
             padding: 30px;
             border-radius: 12px;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .operator-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            opacity: 0.1;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .operator-card:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .operator-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px) scale(1.08);
+            box-shadow: 0 15px 30px rgba(17, 153, 142, 0.3);
+        }
+
+        .operator-card:active {
+            transform: translateY(-5px) scale(1.05);
         }
 
         .operator-icon {
@@ -335,6 +566,14 @@
             justify-content: center;
             font-size: 28px;
             color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .operator-card:hover .operator-icon {
+            transform: rotateY(360deg) scale(1.2);
+            box-shadow: 0 10px 25px rgba(17, 153, 142, 0.5);
         }
 
         .operator-card p {
@@ -361,6 +600,25 @@
             padding: 35px;
             border-radius: 15px;
             border-left: 4px solid #11998e;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::after {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 120px;
+            color: rgba(17, 153, 142, 0.05);
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(17, 153, 142, 0.15);
+            border-left-width: 8px;
         }
 
         .testimonial-card .rating {
@@ -491,7 +749,8 @@
 
         .social-links a:hover {
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            transform: translateY(-3px);
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 10px 20px rgba(17, 153, 142, 0.3);
         }
 
         .footer-bottom {
@@ -553,6 +812,11 @@
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- Header/Navigation -->
     <header>
         <nav>
@@ -590,47 +854,47 @@
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <div class="section-title">
+        <div class="section-title scroll-reveal">
             <h2>Why Choose Us?</h2>
             <p>Experience the best mobile recharge service with amazing benefits</p>
         </div>
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
                 <div class="feature-icon">
                     <i class="fas fa-bolt"></i>
                 </div>
                 <h3>Instant Recharge</h3>
                 <p>Lightning-fast recharges completed in seconds for all major operators</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
                 <div class="feature-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
                 <h3>100% Secure</h3>
                 <p>Bank-grade encryption ensures your transactions are always safe</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
                 <div class="feature-icon">
                     <i class="fas fa-gift"></i>
                 </div>
                 <h3>Cashback Offers</h3>
                 <p>Exciting cashback and rewards on every recharge you make</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
                 <div class="feature-icon">
                     <i class="fas fa-clock"></i>
                 </div>
                 <h3>24/7 Support</h3>
                 <p>Round-the-clock customer support to assist you anytime</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
                 <div class="feature-icon">
                     <i class="fas fa-history"></i>
                 </div>
                 <h3>Transaction History</h3>
                 <p>Track all your recharges with detailed transaction reports</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
                 <div class="feature-icon">
                     <i class="fas fa-bell"></i>
                 </div>
@@ -672,37 +936,37 @@
             <p>We support all major mobile operators across the country</p>
         </div>
         <div class="operators-grid">
-            <div class="operator-card">
+            <div class="operator-card" onclick="window.location.href='airtel-plans.html'" style="cursor: pointer;">
                 <div class="operator-icon">
                     <i class="fas fa-signal"></i>
                 </div>
                 <p>Airtel</p>
             </div>
-            <div class="operator-card">
+            <div class="operator-card" onclick="window.location.href='vi-plans.html'" style="cursor: pointer;">
                 <div class="operator-icon">
                     <i class="fas fa-signal"></i>
                 </div>
                 <p>Vodafone Idea</p>
             </div>
-            <div class="operator-card">
+            <div class="operator-card" onclick="window.location.href='jio-plans.html'" style="cursor: pointer;">
                 <div class="operator-icon">
                     <i class="fas fa-signal"></i>
                 </div>
                 <p>Jio</p>
             </div>
-            <div class="operator-card">
+            <div class="operator-card" onclick="window.location.href='bsnl-plans.html'" style="cursor: pointer;">
                 <div class="operator-icon">
                     <i class="fas fa-signal"></i>
                 </div>
                 <p>BSNL</p>
             </div>
-            <div class="operator-card">
+            <div class="operator-card" onclick="window.location.href='aircel-plans.html'" style="cursor: pointer;">
                 <div class="operator-icon">
                     <i class="fas fa-signal"></i>
                 </div>
                 <p>Aircel</p>
             </div>
-            <div class="operator-card">
+            <div class="operator-card" onclick="window.location.href='mtnl-plans.html'" style="cursor: pointer;">
                 <div class="operator-icon">
                     <i class="fas fa-signal"></i>
                 </div>
@@ -827,37 +1091,223 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // ===== LOADING SCREEN =====
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.classList.add('fade-out');
+            }, 1000);
+        });
+
+        // ===== SCROLL REVEAL ANIMATION =====
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right');
+            
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // ===== STAGGER EFFECT FOR FEATURE CARDS =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+
+            const operatorCards = document.querySelectorAll('.operator-card');
+            operatorCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // ===== PARALLAX EFFECT FOR HERO SECTION =====
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero && scrolled < 600) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - scrolled / 500;
+            }
+        });
+
+        // ===== BUTTON RIPPLE EFFECT =====
+        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-login, .btn-signup, .recharge-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple-effect 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // ===== NAVBAR BACKGROUND ON SCROLL =====
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // ===== FLOATING ANIMATION FOR RANDOM ICONS =====
+        setInterval(() => {
+            const icons = document.querySelectorAll('.feature-icon i, .operator-icon i');
+            icons.forEach(icon => {
+                if (Math.random() > 0.8) {
+                    icon.style.animation = 'float 2s ease-in-out';
+                    setTimeout(() => {
+                        icon.style.animation = '';
+                    }, 2000);
+                }
+            });
+        }, 4000);
+
+        // ===== COUNTER ANIMATION (for future use) =====
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString();
+                }
+            }, 16);
+        }
+
+        // ===== SMOOTH SCROLL =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Mobile menu toggle
+        // ===== MOBILE MENU TOGGLE =====
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navLinks = document.querySelector('.nav-links');
         
-        mobileMenuToggle.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '70px';
+                    navLinks.style.left = '0';
+                    navLinks.style.right = '0';
+                    navLinks.style.background = 'white';
+                    navLinks.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+                    navLinks.style.padding = '20px';
+                    icon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    navLinks.style.display = 'none';
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        }
+
+        // ===== INTERSECTION OBSERVER FOR ADVANCED ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'bounceIn 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .operator-card, .testimonial-card').forEach(card => {
+            observer.observe(card);
         });
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        // ===== DYNAMIC GRADIENT ANIMATION =====
+        let hue = 0;
+        setInterval(() => {
+            hue = (hue + 1) % 360;
+            const hero = document.querySelector('.hero');
+            if (hero && window.pageYOffset < 600) {
+                hero.style.filter = `hue-rotate(${hue}deg)`;
+            }
+        }, 100);
+
+        // ===== LOGO CLICK ANIMATION =====
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.addEventListener('click', function() {
+                this.style.animation = 'bounceIn 0.6s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 600);
+            });
+        }
+
+        // ===== ADD GLOW EFFECT TO POPULAR CARDS =====
+        document.querySelectorAll('.popular-badge').forEach(badge => {
+            const card = badge.closest('.plan-card, .operator-card, .feature-card');
+            if (card) {
+                setInterval(() => {
+                    card.style.boxShadow = '0 0 30px rgba(17, 153, 142, 0.3)';
+                    setTimeout(() => {
+                        card.style.boxShadow = '';
+                    }, 1000);
+                }, 3000);
             }
         });
+
+        console.log('🚀 All animations loaded successfully!');
+    </script>
+        console.log('🚀 All animations loaded successfully!');
     </script>
 </body>
 </html>
