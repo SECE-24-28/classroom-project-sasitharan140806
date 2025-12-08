@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Mobile Recharge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-10 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-teal-400 to-indigo-500"></div>
+          <h1 class="text-lg font-semibold">Mobile Recharge</h1>
+        </div>
+      </div>
+      <nav class="flex flex-wrap items-center gap-2" aria-label="Primary">
+        <a class="nav-link" href="login.html">Login</a>
+        <a class="nav-link" href="signup.html">Signup</a>
+        <a class="nav-link" href="recharge.html">Recharge</a>
+        <a class="nav-link active" href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <div class="max-w-5xl mx-auto px-4 py-10 space-y-6">
+      <section class="card-surface rounded-2xl p-6 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <p class="text-sm text-slate-400">Overview</p>
+            <h2 class="text-2xl font-semibold">User Dashboard</h2>
+            <p class="text-slate-400">Static placeholders to visualize layout; update via future scripts.</p>
+          </div>
+          <a href="recharge.html" class="px-4 py-2 rounded-xl bg-teal-400 text-slate-900 font-semibold shadow-lg shadow-teal-500/30">New Recharge</a>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-1">
+            <p class="text-sm text-slate-400">Last Recharge</p>
+            <p class="text-xl font-semibold">—</p>
+            <p class="muted">Plan: —</p>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-1">
+            <p class="text-sm text-slate-400">Amount</p>
+            <p class="text-xl font-semibold">₹ —</p>
+            <p class="muted">Method: —</p>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-1">
+            <p class="text-sm text-slate-400">Status</p>
+            <p class="badge">Pending</p>
+            <p class="muted">Update on confirmation</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-surface rounded-2xl p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <h3 class="text-xl font-semibold">Recharge History</h3>
+          <a class="text-teal-300" href="recharge.html">Start another recharge</a>
+        </div>
+        <div class="overflow-auto">
+          <table>
+            <thead>
+              <tr class="text-slate-300">
+                <th>Date</th>
+                <th>Number</th>
+                <th>Plan</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td><span class="badge">—</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/70">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-slate-400">
+      <span>Day 3 • Tailwind + CSS demo</span>
+      <span>Navigate: Login • Signup • Recharge • Dashboard</span>
+    </div>
+  </footer>
+</body>
+</html>

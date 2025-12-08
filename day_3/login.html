@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Mobile Recharge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-10 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-teal-400 to-indigo-500"></div>
+        <div>
+          <h1 class="text-lg font-semibold">Mobile Recharge</h1>
+        </div>
+      </div>
+      <nav class="flex flex-wrap items-center gap-2" aria-label="Primary">
+        <a class="nav-link active" href="login.html">Login</a>
+        <a class="nav-link" href="signup.html">Signup</a>
+        <a class="nav-link" href="recharge.html">Recharge</a>
+        <a class="nav-link" href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6 items-start">
+      <section class="card-surface rounded-2xl p-6 space-y-6">
+        <div>
+          <p class="text-sm text-slate-400">Welcome back</p>
+          <h2 class="text-2xl font-semibold">Login to continue</h2>
+          <p class="text-slate-400">Use your email and password to access recharge and dashboard pages.</p>
+        </div>
+        <form action="recharge.html" method="get" class="space-y-4">
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="login-email">Email</label>
+            <input class="w-full input-field" id="login-email" name="email" type="email" required />
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="login-password">Password</label>
+            <input class="w-full input-field" id="login-password" name="password" type="password" required />
+          </div>
+          <label class="inline-flex items-center gap-2 text-sm text-slate-300">
+            <input class="h-4 w-4" type="checkbox" name="remember" />
+            Remember me
+          </label>
+          <div class="flex gap-3 flex-wrap">
+            <button type="submit" class="px-4 py-2 rounded-xl bg-teal-400 text-slate-900 font-semibold shadow-lg shadow-teal-500/30">Continue</button>
+            <a href="signup.html" class="px-4 py-2 rounded-xl border border-slate-700 text-slate-100 hover:border-teal-300">Create an account</a>
+          </div>
+        </form>
+        <p class="text-sm text-slate-400">Tip: Navigation links simulate flow—no backend required.</p>
+      </section>
+
+      <aside class="card-surface rounded-2xl p-6 space-y-4">
+        <h3 class="text-xl font-semibold">Why sign in?</h3>
+        <ul class="list-disc pl-5 space-y-2 text-slate-300">
+          <li>Quickly pick up where you left off.</li>
+          <li>View saved numbers and past recharges.</li>
+          <li>Access dashboard summaries faster.</li>
+        </ul>
+        <div class="rounded-xl border border-slate-800 p-4 bg-slate-900/60">
+          <p class="badge">Demo</p>
+          <p class="mt-2 text-sm text-slate-400">This is a static Tailwind-styled prototype. Forms navigate via links without scripting.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/70">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-slate-400">
+      <span>Day 3 • Tailwind + CSS demo</span>
+      <span>Pages: Login • Signup • Recharge • Dashboard</span>
+    </div>
+  </footer>
+</body>
+</html>

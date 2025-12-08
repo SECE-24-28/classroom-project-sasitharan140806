@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recharge | Mobile Recharge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="sticky top-0 z-10 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-teal-400 to-indigo-500"></div>
+        <div>
+
+          <h1 class="text-lg font-semibold">Mobile Recharge</h1>
+        </div>
+      </div>
+      <nav class="flex flex-wrap items-center gap-2" aria-label="Primary">
+        <a class="nav-link" href="login.html">Login</a>
+        <a class="nav-link" href="signup.html">Signup</a>
+        <a class="nav-link active" href="recharge.html">Recharge</a>
+        <a class="nav-link" href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 py-10 space-y-6">
+      <section class="card-surface rounded-2xl p-6 space-y-6">
+        <div class="flex flex-col gap-1">
+          <p class="text-sm text-slate-400">Recharge flow</p>
+          <h2 class="text-2xl font-semibold">Enter details to proceed</h2>
+          <p class="text-slate-400">Semantic form with Tailwind utilities; submit leads to dashboard for demo.</p>
+        </div>
+        <form action="dashboard.html" method="get" class="grid gap-4 md:grid-cols-2">
+          <div class="space-y-2 md:col-span-1">
+            <label class="text-sm font-medium" for="country">Country Code</label>
+            <select class="w-full input-field" id="country" name="country">
+              <option value="+91">+91 India</option>
+              <option value="+1">+1 USA/Canada</option>
+              <option value="+44">+44 UK</option>
+            </select>
+          </div>
+          <div class="space-y-2 md:col-span-1">
+            <label class="text-sm font-medium" for="number">Mobile Number</label>
+            <input class="w-full input-field" id="number" name="number" type="tel" pattern="[0-9]{10}" placeholder="10-digit" required />
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="operator">Operator</label>
+            <select class="w-full input-field" id="operator" name="operator" required>
+              <option value="">Select</option>
+              <option value="Airtel">Airtel</option>
+              <option value="Jio">Jio</option>
+              <option value="Vi">Vi</option>
+              <option value="BSNL">BSNL</option>
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="circle">Circle/Region</label>
+            <select class="w-full input-field" id="circle" name="circle">
+              <option value="">Select</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Karnataka">Karnataka</option>
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="plan">Plan Amount (₹)</label>
+            <input class="w-full input-field" id="plan" name="plan" type="number" min="1" step="1" placeholder="e.g., 199" required />
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="email">Email for receipt (optional)</label>
+            <input class="w-full input-field" id="email" name="email" type="email" />
+          </div>
+          <div class="md:col-span-2 flex flex-wrap gap-3">
+            <button type="submit" class="px-4 py-2 rounded-xl bg-teal-400 text-slate-900 font-semibold shadow-lg shadow-teal-500/30">Proceed</button>
+            <a href="dashboard.html" class="px-4 py-2 rounded-xl border border-slate-700 text-slate-100 hover:border-teal-300">Skip to Dashboard</a>
+          </div>
+        </form>
+      </section>
+
+      <section class="card-surface rounded-2xl p-6 space-y-3">
+        <h3 class="text-xl font-semibold">Guidance</h3>
+        <p class="text-slate-300">Navigation links simulate the recharge journey—no scripts required. Layout is responsive via Tailwind grid utilities.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/70">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-slate-400">
+      <span>Day 3 • Tailwind + CSS demo</span>
+      <span>Responsive form and navigation</span>
+    </div>
+  </footer>
+</body>
+</html>
