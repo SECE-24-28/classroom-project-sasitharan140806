@@ -4,6 +4,7 @@
 Web application for prepaid/postpaid mobile recharges. Users can browse operator plans, validate numbers, pay securely, and track history. Admins manage operators, plans, offers, and monitor transactions.
 
 ## Functional Requirements
+
 - Account lifecycle: email/phone signup, login, logout, password reset (email/OTP), profile update.
 - Mobile input and validation: format checks by country code, detect/preselect operator and circle when possible, allow manual override.
 - Plan catalog: browse prepaid/postpaid plans, categories (data/voice/SMS/combo), search, filter, sort, view plan details and offers.
@@ -19,6 +20,7 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 - Support: user can raise ticket for failed recharge; admin/support can update status and notes.
 
 ## Non-Functional Requirements
+
 - Performance: typical reads <500ms server time; plan list pagination/infinite scroll; graceful degradation for slow networks.
 - Availability & resilience: stateless servers; retries with idempotency keys for payments/recharges; retry background jobs.
 - Security: HTTPS, JWT access + refresh tokens, hashed passwords (bcrypt/argon2), rate limits on auth, input validation, RBAC on APIs.
@@ -30,10 +32,12 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 - Compatibility: modern evergreen browsers; adaptive for mobile web.
 
 ## User Roles & Capabilities
+
 - User: signup/login/logout/reset password; manage profile; validate number; browse/select plans; apply promo; pay; view/download receipts; view history; raise support ticket.
 - Admin: manage operators/circles/plans/offers; view dashboards and exports; view users and lock/unlock accounts; view transactions and update recharge/payment status; manage support tickets.
 
 ## Feature List
+
 - Auth (signup/login/reset); profile management.
 - Mobile number validation and operator detection.
 - Plan browsing (prepaid/postpaid), search, filters, sorting, details.
@@ -46,6 +50,7 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 - Admin dashboards and CRUD for catalog (operators, plans, offers).
 
 ## Navigation Flow (happy path)
+
 1) User lands → login/signup.
 2) Enters mobile number, detects/selects operator & circle.
 3) Picks prepaid/postpaid tab → browses/searches plans → selects plan.
@@ -57,7 +62,8 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 ## Wireframe Sketches (ASCII)
 
 ### Login / Signup
-```
+ 
+```text
 +--------------------------------------+
 |  Logo                                |
 |  [ Email ]                           |
@@ -68,7 +74,8 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 ```
 
 ### Mobile Number & Operator
-```
+ 
+```text
 +--------------------------------------+
 |  Enter Number: [ +91 |__________ ]   |
 |  Operator: [Auto-detected v]         |
@@ -79,7 +86,8 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 ```
 
 ### Plan Selection
-```
+ 
+```text
 +--------------------------------------------------+
 | Tabs: Prepaid | Postpaid | Offers                |
 | Filters: [Price v] [Data v] [Validity v] [Sort]  |
@@ -92,7 +100,8 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 ```
 
 ### Payment Page
-```
+ 
+```text
 +--------------------------------------+
 |  Plan: ₹199 | 1.5GB/day | 28d        |
 |  Promo Code: [____] (Apply)          |
@@ -103,7 +112,8 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 ```
 
 ### Recharge Confirmation
-```
+ 
+```text
 +--------------------------------------+
 |  Success! ✅                          |
 |  Mobile: +91-98xxxxxx12              |
@@ -114,7 +124,8 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 ```
 
 ### User Dashboard
-```
+ 
+```text
 +--------------------------------------------------+
 |  Balance/Wallet | Last Recharge | Quick Recharge |
 |  Recent History (table)                           |
@@ -124,7 +135,8 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 ```
 
 ### Admin Dashboard
-```
+ 
+```text
 +--------------------------------------------------+
 |  KPIs: Total Recharges | Failures | Revenue      |
 |  Charts: Volume over time | Top Plans            |
@@ -134,6 +146,7 @@ Web application for prepaid/postpaid mobile recharges. Users can browse operator
 ```
 
 ## Notes
+
 - Build MERN: MongoDB (recharges, users, plans, tickets), Express/Node for APIs and operator integrations, React for UI.
 - Use environment-based configs for payment gateways and operator endpoints; mock APIs for dev.
 - Prefer server-side validation plus client hints to reduce failed transactions.
