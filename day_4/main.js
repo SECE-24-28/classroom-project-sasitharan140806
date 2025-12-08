@@ -232,7 +232,7 @@ function handleDashboard() {
 }
 
 function init() {
-  const page = document.documentElement.dataset.page;
+  const { page } = document.documentElement.dataset;
   handleLogin();
   handleSignup();
   handleRecharge();
