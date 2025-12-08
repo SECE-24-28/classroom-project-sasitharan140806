@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-page="plans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan Selection | Mobile Recharge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+  <header class="sticky top-0 z-10 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-cyan-400 to-indigo-500"></div>
+        <div>
+          <p class="text-sm text-slate-400">Day 5 • API driven</p>
+          <h1 class="text-lg font-semibold">Mobile Recharge</h1>
+        </div>
+      </div>
+      <nav class="flex flex-wrap items-center gap-2" aria-label="Primary">
+        <a class="nav-link" href="../day_4/login.html">Login</a>
+        <a class="nav-link" href="../day_4/signup.html">Signup</a>
+        <a class="nav-link" href="../day_4/recharge.html">Recharge</a>
+        <a class="nav-link" href="../day_4/dashboard.html">Dashboard</a>
+        <a class="nav-link active" href="index.html">Plans (API)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <div class="max-w-5xl mx-auto px-4 py-10 space-y-8">
+      <section class="card-surface rounded-2xl p-6 space-y-6">
+        <div class="flex flex-col gap-2">
+          <p class="text-sm text-slate-400">MockAPI integration</p>
+          <h2 class="text-2xl font-semibold">Plan Selection</h2>
+          <p class="text-slate-400">Fetches plans from a MockAPI endpoint (replace API_URL in main.js). Shows loading, errors, and dynamic selection.</p>
+        </div>
+        <div class="flex flex-wrap gap-3 items-center">
+          <div class="inline-flex rounded-xl border border-slate-800 overflow-hidden">
+            <button data-type="prepaid" class="type-btn px-4 py-2 bg-slate-800 text-slate-100">Prepaid</button>
+            <button data-type="postpaid" class="type-btn px-4 py-2 text-slate-200">Postpaid</button>
+          </div>
+          <button id="reload" class="px-4 py-2 rounded-xl border border-slate-700 text-slate-100 hover:border-cyan-300">Reload from API</button>
+          <span id="status" class="text-sm text-slate-400">Ready.</span>
+        </div>
+        <div id="planGrid" class="grid gap-3 md:grid-cols-3"></div>
+      </section>
+
+      <section class="card-surface rounded-2xl p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <h3 class="text-xl font-semibold">Selected Plan</h3>
+          <p class="text-sm text-slate-400">Updates instantly when you click a plan.</p>
+        </div>
+        <div id="selected" class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-2">
+          <p>No plan selected.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/70">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-slate-400">
+      <span>Day 5 • Fetch + DOM updates</span>
+      <span>Replace API_URL in main.js with your MockAPI endpoint</span>
+    </div>
+  </footer>
+  <div class="toast" id="toast"></div>
+  <script src="main.js"></script>
+</body>
+</html>
