@@ -1,9 +1,10 @@
-.two{
+.two {
     background-attachment: fixed;
     background-color: rgb(19, 17, 15);
     color: rgb(246, 218, 6);
 }
-.three{
+
+.three {
     margin: 10px;
     padding: 10px;
     font-style: normal;
