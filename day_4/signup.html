@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-page="signup">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup | Mobile Recharge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+  <header class="sticky top-0 z-10 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-teal-400 to-indigo-500"></div>
+        <div>
+          <h1 class="text-lg font-semibold">Mobile Recharge</h1>
+        </div>
+      </div>
+      <nav class="flex flex-wrap items-center gap-2" aria-label="Primary">
+        <a class="nav-link" href="login.html">Login</a>
+        <a class="nav-link active" href="signup.html">Signup</a>
+        <a class="nav-link" href="recharge.html">Recharge</a>
+        <a class="nav-link" href="dashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6 items-start">
+      <section class="card-surface rounded-2xl p-6 space-y-6">
+        <div>
+          <p class="text-sm text-slate-400">Create account</p>
+          <h2 class="text-2xl font-semibold">Join and start recharging</h2>
+          <p class="text-slate-400">Validates phone length and password confirmation before saving.</p>
+        </div>
+        <form id="signupForm" class="space-y-4" novalidate>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="signup-name">Full Name</label>
+            <input class="w-full input-field" id="signup-name" name="name" type="text" required />
+            <p class="error-msg" data-error-for="name"></p>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="signup-email">Email</label>
+            <input class="w-full input-field" id="signup-email" name="email" type="email" required />
+            <p class="error-msg" data-error-for="email"></p>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="signup-phone">Mobile Number</label>
+            <input class="w-full input-field" id="signup-phone" name="phone" type="tel" pattern="[0-9]{10}" placeholder="10-digit" required />
+            <p class="error-msg" data-error-for="phone"></p>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="signup-password">Password</label>
+            <input class="w-full input-field" id="signup-password" name="password" type="password" required />
+            <p class="error-msg" data-error-for="password"></p>
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium" for="signup-confirm">Confirm Password</label>
+            <input class="w-full input-field" id="signup-confirm" name="confirm" type="password" required />
+            <p class="error-msg" data-error-for="confirm"></p>
+          </div>
+          <button type="submit" class="w-full px-4 py-2 rounded-xl bg-teal-400 text-slate-900 font-semibold shadow-lg shadow-teal-500/30">Sign Up</button>
+          <p class="text-sm text-slate-400" id="signupMessage"></p>
+        </form>
+      </section>
+
+      <aside class="card-surface rounded-2xl p-6 space-y-4">
+        <h3 class="text-xl font-semibold">What JS adds here</h3>
+        <ul class="list-disc pl-5 space-y-2 text-slate-300">
+          <li>Validates email, phone (10 digits), and password match.</li>
+          <li>Saves user locally and moves to login after success.</li>
+          <li>Inline error hints per field.</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/70">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-slate-400">
+      <span>Day 4 • Client-side JS demo</span>
+      <span>Use nav links to move through the flow</span>
+    </div>
+  </footer>
+  <div class="toast" id="toast"></div>
+  <script src="main.js"></script>
+</body>
+</html>
