@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Details - Mobile Recharge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .plan-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #f0f0f0;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #e0e0e0;
+            transform: rotate(90deg);
+        }
+
+        .plan-price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .operator-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .plan-features {
+            padding: 30px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .feature-info h4 {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .feature-info p {
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .rewards-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reward-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .reward-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .reward-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .reward-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .reward-info h4 {
+            font-size: 15px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .reward-info p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .validity-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .terms-section {
+            background: #fff3e0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .terms-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e65100;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .terms-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .terms-list li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .terms-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #e65100;
+            font-weight: bold;
+        }
+
+        .terms-link {
+            color: #1976d2;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .terms-link:hover {
+            text-decoration: underline;
+        }
+
+        .recharge-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .recharge-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(17, 153, 142, 0.4);
+        }
+
+        .offer-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .offer-banner i {
+            font-size: 24px;
+        }
+
+        .offer-banner p {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-price {
+                font-size: 36px;
+            }
+
+            .modal-content {
+                border-radius: 0;
+                max-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="back-btn" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1>Plan Details</h1>
+    </div>
+
+    <div class="plan-modal" id="planModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="window.history.back()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-header">
+                <div class="plan-price" id="planPrice">₹349</div>
+                <div class="operator-badge" id="operatorBadge">Airtel 5G Plus</div>
+            </div>
+
+            <div class="plan-features">
+                <div class="offer-banner" id="offerBanner">
+                    <i class="fas fa-gift"></i>
+                    <p id="offerText">FREE, Apple Music & 20+ OTTs with SonyLIV</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h4>Voice</h4>
+                            <p id="voiceData">Unlimited Local & STD Calls</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h4>Data</h4>
+                            <p id="dataAmount">2 GB Data Per Day</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h4>Validity</h4>
+                            <p id="validityDays">28 Days Validity</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-sms"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h4>SMS</h4>
+                            <p id="smsData">100 SMS Per Day</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rewards-section">
+                    <div class="section-title">
+                        <i class="fas fa-star"></i>
+                        <span id="rewardsCount">6 MORE REWARDS</span>
+                    </div>
+
+                    <div id="rewardsList">
+                        <!-- Rewards will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="terms-section">
+                    <h3>TERMS & CONDITIONS</h3>
+                    <ul class="terms-list" id="termsList">
+                        <li>Post daily 100 SMS limit charging will be Re. 1 Local / Rs. 1.5 STD per SMS</li>
+                        <li>Post daily quota usage data speed will be up to 64 Kbps</li>
+                    </ul>
+                    <a href="#" class="terms-link" id="termsLink">
+                        Terms & Conditions <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <button class="recharge-btn" id="rechargeBtn">RECHARGE NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/mockAPI.js"></script>
+    <script>
+        // Get plan details from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const planId = urlParams.get('planId');
+        const operator = urlParams.get('operator') || 'Airtel';
+
+        // Plan data structure
+        const planDetails = {
+            'airtel_349': {
+                price: 349,
+                operator: 'Airtel 5G Plus',
+                voice: 'Unlimited Local & STD Calls',
+                data: '2 GB Data Per Day',
+                validity: '28 Days Validity',
+                sms: '100 SMS Per Day',
+                offer: 'FREE, Apple Music & 20+ OTTs with SonyLIV',
+                rewards: [
+                    {
+                        icon: '🎬',
+                        title: 'SunNXT Premium + 20 OTTs on Airtel Xstream Play',
+                        description: 'Enjoy 28 days full access to 20+ OTTs such as Sony LIV, Lionsgate Play, Aha, Chaupal, Hoichoi, Sunhat and more on Airtel Xstream Play Premium. Download the app and enjoy top hits today!',
+                        validity: ''
+                    },
+                    {
+                        icon: '🛡️',
+                        title: "India's 1st Spam Fighting Network",
+                        description: "Get LIVE Alerts as 'Airtel warning: SPAM' on your phone for incoming spam calls",
+                        validity: ''
+                    },
+                    {
+                        icon: '🤖',
+                        title: 'Perplexity Pro AI',
+                        description: 'Get a powerful search experience with a free subscription of Perplexity Pro AI worth ₹1700+ for 12 months',
+                        validity: 'Validity: 12 MONTHS'
+                    },
+                    {
+                        icon: '📞',
+                        title: 'Free hellotunes for you',
+                        description: 'Set any one tune every 30 days for free',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎵',
+                        title: 'Apple Music',
+                        description: 'Stream over 100 million songs ad-free',
+                        validity: 'Validity: 6 MONTH'
+                    },
+                    {
+                        icon: '📡',
+                        title: 'Unlimited 5G Data',
+                        description: 'Unlimited 5G Data is over and above your plan limit and can be used in 5G Network areas only',
+                        validity: ''
+                    }
+                ],
+                terms: [
+                    'Post daily 100 SMS limit charging will be Re. 1 Local / Rs. 1.5 STD per SMS',
+                    'Post daily quota usage data speed will be up to 64 Kbps'
+                ]
+            },
+            'jio_299': {
+                price: 299,
+                operator: 'Jio',
+                voice: 'Unlimited Calls',
+                data: '2 GB/day',
+                validity: '28 days',
+                sms: '100/day',
+                offer: 'Free JioTV, JioCinema & JioSaavn',
+                rewards: [
+                    {
+                        icon: '📺',
+                        title: 'JioTV Premium Access',
+                        description: 'Watch 600+ Live TV channels including premium HD channels',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎬',
+                        title: 'JioCinema Premium',
+                        description: 'Stream latest movies and web series ad-free',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎵',
+                        title: 'JioSaavn Pro',
+                        description: 'Unlimited music streaming with ad-free experience',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '📱',
+                        title: 'JioCloud Storage',
+                        description: 'Get 100GB free cloud storage for your photos and files',
+                        validity: ''
+                    },
+                    {
+                        icon: '🔒',
+                        title: 'JioSecurity',
+                        description: 'Comprehensive mobile security and antivirus protection',
+                        validity: ''
+                    },
+                    {
+                        icon: '📡',
+                        title: 'True 5G Experience',
+                        description: 'Unlimited 5G data with compatible devices in 5G areas',
+                        validity: ''
+                    }
+                ],
+                terms: [
+                    'Post daily SMS limit, charging Re. 1 Local / Rs. 1.5 STD per SMS',
+                    'After daily data limit, speed reduced to 64 Kbps',
+                    '5G services subject to 5G network availability'
+                ]
+            },
+            'vi_299': {
+                price: 299,
+                operator: 'Vi (Vodafone Idea)',
+                voice: 'Unlimited Calls',
+                data: '1.5 GB/day',
+                validity: '28 days',
+                sms: '100/day',
+                offer: 'Weekend Data Rollover + Vi Movies & TV',
+                rewards: [
+                    {
+                        icon: '🎬',
+                        title: 'Vi Movies & TV',
+                        description: 'Access to premium content including movies, TV shows and live TV',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '📅',
+                        title: 'Weekend Data Rollover',
+                        description: 'Unused weekday data gets rolled over to weekends',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎮',
+                        title: 'Vi Gaming',
+                        description: 'Play 1000+ premium games without downloading',
+                        validity: ''
+                    },
+                    {
+                        icon: '📰',
+                        title: 'Vi News & Live TV',
+                        description: 'Stay updated with news and live TV channels',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎵',
+                        title: 'Hungama Music',
+                        description: 'Stream millions of songs ad-free',
+                        validity: 'Validity: 28 DAYS'
+                    }
+                ],
+                terms: [
+                    'Weekend data rollover applicable on unused daily data quota',
+                    'Post FUP data speed reduced to 64 Kbps',
+                    'SMS charges Re. 1 per SMS after daily limit'
+                ]
+            },
+            'bsnl_199': {
+                price: 199,
+                operator: 'BSNL',
+                voice: 'Unlimited Calls',
+                data: '2 GB/day',
+                validity: '28 days',
+                sms: '100/day',
+                offer: 'BSNL Tunes + Lokdhun Content',
+                rewards: [
+                    {
+                        icon: '🎵',
+                        title: 'BSNL Tunes',
+                        description: 'Set personalized caller tunes from extensive library',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '📱',
+                        title: 'Lokdhun Entertainment',
+                        description: 'Access to regional content and entertainment',
+                        validity: ''
+                    },
+                    {
+                        icon: '🏏',
+                        title: 'Sports Updates',
+                        description: 'Get live cricket scores and sports updates',
+                        validity: ''
+                    },
+                    {
+                        icon: '📰',
+                        title: 'News Alerts',
+                        description: 'Receive breaking news and updates instantly',
+                        validity: ''
+                    }
+                ],
+                terms: [
+                    'Valid on 4G network across India',
+                    'Data speed throttled to 40 Kbps after daily limit',
+                    'SMS charges apply after daily quota'
+                ]
+            },
+            'bsnl_187': {
+                price: 187,
+                operator: 'BSNL',
+                voice: 'Unlimited Calls',
+                data: '2 GB/day',
+                validity: '28 days',
+                sms: '100/day',
+                offer: 'BSNL Tunes + Free Roaming',
+                rewards: [
+                    {
+                        icon: '🎵',
+                        title: 'BSNL Tunes Premium',
+                        description: 'Access premium caller tunes library with latest songs',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '🌐',
+                        title: 'Free National Roaming',
+                        description: 'Use your plan anywhere in India without extra charges',
+                        validity: ''
+                    },
+                    {
+                        icon: '📞',
+                        title: 'STD Calls Included',
+                        description: 'Make unlimited STD calls across India',
+                        validity: ''
+                    },
+                    {
+                        icon: '🔒',
+                        title: 'Secure Network',
+                        description: 'BSNL government network ensures data security',
+                        validity: ''
+                    },
+                    {
+                        icon: '📱',
+                        title: 'Lokdhun App',
+                        description: 'Stream regional content and entertainment',
+                        validity: 'Validity: 28 DAYS'
+                    }
+                ],
+                terms: [
+                    'Valid on BSNL 4G network across India',
+                    'Post daily data limit, speed reduced to 40 Kbps',
+                    'SMS charges Re. 1 per SMS after daily limit',
+                    'No additional roaming charges within India'
+                ]
+            },
+            'airtel_265': {
+                price: 265,
+                operator: 'Airtel',
+                voice: 'Unlimited Local & STD Calls',
+                data: '1.5 GB Data Per Day',
+                validity: '28 Days Validity',
+                sms: '100 SMS Per Day',
+                offer: 'FREE Airtel Xstream + Wynk Music',
+                rewards: [
+                    {
+                        icon: '📺',
+                        title: 'Airtel Xstream Premium',
+                        description: 'Access to 350+ Live TV channels and premium content including ZEE5, SonyLIV, Lionsgate Play and more',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '🎵',
+                        title: 'Wynk Music Premium',
+                        description: 'Stream unlimited songs ad-free with high quality audio',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '🛡️',
+                        title: 'Airtel Spam Protection',
+                        description: 'Get LIVE Alerts as "Airtel warning: SPAM" on your phone for incoming spam calls',
+                        validity: ''
+                    },
+                    {
+                        icon: '📞',
+                        title: 'Free Hellotunes',
+                        description: 'Set any caller tune for free, updated monthly',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎁',
+                        title: 'Airtel Thanks Benefits',
+                        description: 'Exclusive rewards, discounts and priority customer support',
+                        validity: ''
+                    }
+                ],
+                terms: [
+                    'Post daily 100 SMS limit charging will be Re. 1 Local / Rs. 1.5 STD per SMS',
+                    'Post daily quota usage data speed will be up to 64 Kbps',
+                    'Unlimited 5G data where available with compatible device'
+                ]
+            },
+            'airtel_179': {
+                price: 179,
+                operator: 'Airtel',
+                voice: 'Unlimited Local & STD Calls',
+                data: '1 GB Data Per Day',
+                validity: '28 Days Validity',
+                sms: '100 SMS Per Day',
+                offer: 'Airtel Thanks Benefits',
+                rewards: [
+                    {
+                        icon: '📱',
+                        title: 'Airtel Thanks App',
+                        description: 'Access exclusive offers and manage your account easily',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎵',
+                        title: 'Wynk Music Free',
+                        description: 'Stream millions of songs with limited ads',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '📞',
+                        title: 'Free Hellotunes',
+                        description: 'Set personalized caller tunes',
+                        validity: ''
+                    },
+                    {
+                        icon: '🛡️',
+                        title: 'Spam Protection',
+                        description: 'Automatic spam call identification and blocking',
+                        validity: ''
+                    }
+                ],
+                terms: [
+                    'Post daily SMS limit, charges Re. 1 per SMS',
+                    'After daily data limit, speed reduced to 64 Kbps',
+                    'Valid for 28 days from date of recharge'
+                ]
+            },
+            'jio_239': {
+                price: 239,
+                operator: 'Jio',
+                voice: 'Unlimited Calls',
+                data: '1.5 GB/day',
+                validity: '28 days',
+                sms: '100/day',
+                offer: 'Free JioTV, JioCinema, JioSaavn & More',
+                rewards: [
+                    {
+                        icon: '📺',
+                        title: 'JioTV Premium',
+                        description: 'Watch 600+ Live TV channels including premium HD channels',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '🎬',
+                        title: 'JioCinema Premium',
+                        description: 'Stream latest movies, web series and sports ad-free',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '🎵',
+                        title: 'JioSaavn Pro',
+                        description: 'Unlimited music streaming with high quality audio',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '☁️',
+                        title: 'JioCloud Storage',
+                        description: 'Get 100GB free cloud storage for photos and files',
+                        validity: ''
+                    },
+                    {
+                        icon: '🔒',
+                        title: 'JioSecurity Premium',
+                        description: 'Comprehensive mobile security and antivirus protection',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '📡',
+                        title: 'True 5G Unlimited',
+                        description: 'Unlimited 5G data with compatible devices in 5G coverage areas',
+                        validity: ''
+                    }
+                ],
+                terms: [
+                    'Post daily SMS limit, charging Re. 1 Local / Rs. 1.5 STD per SMS',
+                    'After daily data limit, speed reduced to 64 Kbps',
+                    '5G services subject to 5G network availability and compatible device'
+                ]
+            },
+            'vi_249': {
+                price: 249,
+                operator: 'Vi (Vodafone Idea)',
+                voice: 'Unlimited Calls',
+                data: '1.5 GB/day',
+                validity: '28 days',
+                sms: '100/day',
+                offer: 'Weekend Data Rollover + Vi Movies & TV',
+                rewards: [
+                    {
+                        icon: '🎬',
+                        title: 'Vi Movies & TV Premium',
+                        description: 'Access to premium content including latest movies, TV shows and 400+ live TV channels',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '📅',
+                        title: 'Weekend Data Rollover',
+                        description: 'Unused weekday data automatically rolls over to weekends for binge watching',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎮',
+                        title: 'Vi Gaming Premium',
+                        description: 'Play 1000+ premium games without downloading',
+                        validity: 'Validity: 28 DAYS'
+                    },
+                    {
+                        icon: '📰',
+                        title: 'Vi News & Live TV',
+                        description: 'Stay updated with breaking news and live TV channels',
+                        validity: ''
+                    },
+                    {
+                        icon: '🎵',
+                        title: 'Hungama Music Pro',
+                        description: 'Stream millions of songs ad-free with offline download',
+                        validity: 'Validity: 28 DAYS'
+                    }
+                ],
+                terms: [
+                    'Weekend data rollover applicable on unused daily data quota',
+                    'Post FUP data speed reduced to 64 Kbps',
+                    'SMS charges Re. 1 per SMS after daily limit',
+                    'OTT benefits activated within 24 hours'
+                ]
+            }
+        };
+
+        // Load plan details
+        function loadPlanDetails() {
+            const plan = planDetails[planId] || planDetails['airtel_349'];
+            
+            document.getElementById('planPrice').textContent = `₹${plan.price}`;
+            document.getElementById('operatorBadge').textContent = plan.operator;
+            document.getElementById('offerText').textContent = plan.offer;
+            document.getElementById('voiceData').textContent = plan.voice;
+            document.getElementById('dataAmount').textContent = plan.data;
+            document.getElementById('validityDays').textContent = plan.validity;
+            document.getElementById('smsData').textContent = plan.sms;
+            document.getElementById('rewardsCount').textContent = `${plan.rewards.length} MORE REWARDS`;
+
+            // Load rewards
+            const rewardsList = document.getElementById('rewardsList');
+            rewardsList.innerHTML = '';
+            
+            plan.rewards.forEach(reward => {
+                const rewardDiv = document.createElement('div');
+                rewardDiv.className = 'reward-item';
+                rewardDiv.innerHTML = `
+                    <div class="reward-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <span style="font-size: 28px;">${reward.icon}</span>
+                    </div>
+                    <div class="reward-info">
+                        <h4>${reward.title}</h4>
+                        <p>${reward.description}</p>
+                        ${reward.validity ? `<span class="validity-tag">${reward.validity}</span>` : ''}
+                    </div>
+                `;
+                rewardsList.appendChild(rewardDiv);
+            });
+
+            // Load terms
+            const termsList = document.getElementById('termsList');
+            termsList.innerHTML = '';
+            
+            plan.terms.forEach(term => {
+                const li = document.createElement('li');
+                li.textContent = term;
+                termsList.appendChild(li);
+            });
+        }
+
+        // Recharge button handler
+        document.getElementById('rechargeBtn').addEventListener('click', function() {
+            const fallbackId = 'airtel_349';
+            const plan = planDetails[planId] || planDetails[fallbackId];
+            const effectivePlanId = planDetails[planId] ? planId : fallbackId;
+            localStorage.setItem('selectedPlan', JSON.stringify({
+                operator: plan.operator,
+                price: plan.price,
+                validity: plan.validity,
+                planType: plan.offer || 'Plan',
+                planId: effectivePlanId
+            }));
+            window.location.href = 'payment.html';
+        });
+
+        // Load plan details on page load
+        window.addEventListener('load', loadPlanDetails);
+    </script>
+</body>
+</html>

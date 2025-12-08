@@ -1,0 +1,186 @@
+{
+  "jio": [
+    {
+      "id": "jio_1",
+      "operator": "Jio",
+      "amount": 25,
+      "validity": "28 days",
+      "data": "2GB",
+      "voice": "Unlimited",
+      "sms": "300 SMS",
+      "type": "data",
+      "popular": false
+    },
+    {
+      "id": "jio_2",
+      "operator": "Jio",
+      "amount": 155,
+      "validity": "28 days",
+      "data": "12GB",
+      "voice": "Unlimited",
+      "sms": "300 SMS",
+      "type": "data",
+      "popular": false
+    },
+    {
+      "id": "jio_3",
+      "operator": "Jio",
+      "amount": 299,
+      "validity": "28 days",
+      "data": "2GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "unlimited",
+      "popular": true
+    },
+    {
+      "id": "jio_4",
+      "operator": "Jio",
+      "amount": 666,
+      "validity": "84 days",
+      "data": "2GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "unlimited",
+      "popular": true
+    },
+    {
+      "id": "jio_5",
+      "operator": "Jio",
+      "amount": 2999,
+      "validity": "365 days",
+      "data": "2.5GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "long-validity",
+      "popular": false
+    }
+  ],
+  "airtel": [
+    {
+      "id": "airtel_1",
+      "operator": "Airtel",
+      "amount": 48,
+      "validity": "28 days",
+      "data": "3GB",
+      "voice": "Unlimited",
+      "sms": "300 SMS",
+      "type": "data",
+      "popular": false
+    },
+    {
+      "id": "airtel_2",
+      "operator": "Airtel",
+      "amount": 179,
+      "validity": "28 days",
+      "data": "15GB",
+      "voice": "Unlimited",
+      "sms": "300 SMS",
+      "type": "data",
+      "popular": false
+    },
+    {
+      "id": "airtel_3",
+      "operator": "Airtel",
+      "amount": 319,
+      "validity": "28 days",
+      "data": "2GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "unlimited",
+      "popular": true
+    },
+    {
+      "id": "airtel_4",
+      "operator": "Airtel",
+      "amount": 719,
+      "validity": "84 days",
+      "data": "2GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "unlimited",
+      "popular": true
+    },
+    {
+      "id": "airtel_5",
+      "operator": "Airtel",
+      "amount": 3359,
+      "validity": "365 days",
+      "data": "2.5GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "long-validity",
+      "popular": false
+    }
+  ],
+  "vi": [
+    {
+      "id": "vi_1",
+      "operator": "Vi",
+      "amount": 58,
+      "validity": "28 days",
+      "data": "4GB",
+      "voice": "Unlimited",
+      "sms": "300 SMS",
+      "type": "data",
+      "popular": false
+    },
+    {
+      "id": "vi_2",
+      "operator": "Vi",
+      "amount": 299,
+      "validity": "28 days",
+      "data": "1.5GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "unlimited",
+      "popular": true
+    },
+    {
+      "id": "vi_3",
+      "operator": "Vi",
+      "amount": 699,
+      "validity": "84 days",
+      "data": "1.5GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "unlimited",
+      "popular": true
+    }
+  ],
+  "bsnl": [
+    {
+      "id": "bsnl_1",
+      "operator": "BSNL",
+      "amount": 47,
+      "validity": "28 days",
+      "data": "2GB",
+      "voice": "Unlimited",
+      "sms": "300 SMS",
+      "type": "data",
+      "popular": false
+    },
+    {
+      "id": "bsnl_2",
+      "operator": "BSNL",
+      "amount": 199,
+      "validity": "28 days",
+      "data": "2GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "unlimited",
+      "popular": true
+    },
+    {
+      "id": "bsnl_3",
+      "operator": "BSNL",
+      "amount": 1999,
+      "validity": "365 days",
+      "data": "2GB/day",
+      "voice": "Unlimited",
+      "sms": "100/day",
+      "type": "long-validity",
+      "popular": false
+    }
+  ]
+}
