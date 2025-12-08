@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSNL Recharge Plans - MobileRecharge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; }
+        .header { background: linear-gradient(135deg, #f39200 0%, #ffb347 100%); color: white; padding: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .back-btn { background: rgba(255, 255, 255, 0.2); border: 2px solid white; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .back-btn:hover { background: white; color: #f39200; }
+        .operator-header { display: flex; align-items: center; gap: 20px; }
+        .operator-logo { width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #f39200; }
+        .operator-info h1 { font-size: 32px; margin-bottom: 5px; }
+        .operator-info p { opacity: 0.9; font-size: 16px; }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .filter-section { background: white; padding: 20px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+        .filter-tabs { display: flex; gap: 15px; flex-wrap: wrap; }
+        .filter-tab { padding: 10px 25px; border: 2px solid #e0e0e0; background: white; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-weight: 600; color: #555; }
+        .filter-tab:hover { border-color: #f39200; color: #f39200; }
+        .filter-tab.active { background: #f39200; border-color: #f39200; color: white; }
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        .plan-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); transition: all 0.3s; border: 2px solid transparent; position: relative; }
+        .plan-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(243, 146, 0, 0.2); border-color: #f39200; }
+        .plan-price { font-size: 36px; font-weight: bold; color: #f39200; margin-bottom: 15px; }
+        .plan-price span { font-size: 20px; }
+        .plan-validity { background: #fff3e0; color: #f39200; padding: 8px 15px; border-radius: 6px; display: inline-block; margin-bottom: 15px; font-weight: 600; font-size: 14px; }
+        .plan-benefits { list-style: none; margin: 20px 0; }
+        .plan-benefits li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 10px; color: #555; }
+        .plan-benefits li:last-child { border-bottom: none; }
+        .plan-benefits i { color: #f39200; font-size: 16px; }
+        .recharge-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #f39200 0%, #ffb347 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .recharge-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(243, 146, 0, 0.4); }
+        .view-details-btn { width: 100%; padding: 12px; background: white; color: #f39200; border: 2px solid #f39200; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; margin-bottom: 10px; }
+        .view-details-btn:hover { background: #f39200; color: white; }
+        .plan-type-badge { display: inline-block; padding: 5px 12px; background: #4caf50; color: white; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+        .popular-badge { position: absolute; top: -10px; right: 20px; background: #4caf50; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        @media (max-width: 768px) { .plans-grid { grid-template-columns: 1fr; } .operator-info h1 { font-size: 24px; } .header-content { flex-direction: column; gap: 20px; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <a href="landing.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <div class="operator-header">
+                <div class="operator-logo"><i class="fas fa-signal"></i></div>
+                <div class="operator-info">
+                    <h1>BSNL Recharge Plans</h1>
+                    <p>Choose from our affordable BSNL recharge plans</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="filter-section">
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterPlans('all')">All Plans</button>
+                <button class="filter-tab" onclick="filterPlans('data')">Data Plans</button>
+                <button class="filter-tab" onclick="filterPlans('unlimited')">Unlimited</button>
+                <button class="filter-tab" onclick="filterPlans('validity')">Long Validity</button>
+            </div>
+        </div>
+
+        <div class="plans-grid">
+            <div class="plan-card" data-type="unlimited">
+                <span class="popular-badge">POPULAR</span>
+                <span class="plan-type-badge">UNLIMITED</span>
+                <div class="plan-price">₹<span>187</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 28 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 2 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-play-circle"></i> BSNL Tunes</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_187')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('187', '28 Days', 'Unlimited')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="data">
+                <span class="plan-type-badge">BUDGET</span>
+                <div class="plan-price">₹<span>108</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 26 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 1 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-phone"></i> All Network Calls</li>
+                </ul>
+                <button class="recharge-btn" onclick="selectPlan('108', '26 Days', 'Budget')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="unlimited">
+                <span class="plan-type-badge">BEST VALUE</span>
+                <div class="plan-price">₹<span>199</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 30 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 2 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-globe"></i> National Roaming Free</li>
+                </ul>
+                <button class="recharge-btn" onclick="selectPlan('199', '30 Days', 'Best Value')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="unlimited">
+                <span class="plan-type-badge">UNLIMITED</span>
+                <div class="plan-price">₹<span>298</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 45 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 1.5 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-music"></i> Free BSNL Tunes</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_298')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('298', '45 Days', 'Unlimited')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="unlimited">
+                <span class="plan-type-badge">POPULAR</span>
+                <div class="plan-price">₹<span>399</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 70 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 2 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-shield-alt"></i> Data Rollover</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_399')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('399', '70 Days', 'Popular')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="unlimited">
+                <span class="plan-type-badge">VALUE PACK</span>
+                <div class="plan-price">₹<span>485</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 84 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 1.5 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-phone"></i> Free Roaming</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_485')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('485', '84 Days', 'Value Pack')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="validity">
+                <span class="plan-type-badge">LONG VALIDITY</span>
+                <div class="plan-price">₹<span>666</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 129 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 2 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-globe"></i> National Roaming</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_666')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('666', '129 Days', 'Long Validity')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="validity">
+                <span class="plan-type-badge">ANNUAL</span>
+                <div class="plan-price">₹<span>1,498</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 365 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 24 GB Data</li>
+                    <li><i class="fas fa-comment"></i> 3600 SMS</li>
+                    <li><i class="fas fa-phone"></i> Free Roaming</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_1498')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('1498', '365 Days', 'Annual')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="validity">
+                <span class="plan-type-badge">ANNUAL PACK</span>
+                <div class="plan-price">₹<span>2,099</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 365 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 1.5 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-music"></i> BSNL Tunes Premium</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_2099')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('2099', '365 Days', 'Annual Pack')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="validity">
+                <span class="plan-type-badge">ANNUAL UNLIMITED</span>
+                <div class="plan-price">₹<span>2,999</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 365 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-check-circle"></i> Unlimited Voice Calls</li>
+                    <li><i class="fas fa-wifi"></i> 2 GB/Day Data</li>
+                    <li><i class="fas fa-comment"></i> 100 SMS/Day</li>
+                    <li><i class="fas fa-shield-alt"></i> Premium Support</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_2999')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('2999', '365 Days', 'Annual Unlimited')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="data">
+                <span class="plan-type-badge">DATA PACK</span>
+                <div class="plan-price">₹<span>56</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 26 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-wifi"></i> 5 GB Data</li>
+                    <li><i class="fas fa-clock"></i> 26 Days Validity</li>
+                    <li><i class="fas fa-bolt"></i> 4G Speed</li>
+                </ul>
+                <button class="recharge-btn" onclick="selectPlan('56', '26 Days', 'Data Pack')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="data">
+                <span class="plan-type-badge">DATA BOOSTER</span>
+                <div class="plan-price">₹<span>107</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 28 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-wifi"></i> 10 GB Data</li>
+                    <li><i class="fas fa-clock"></i> 28 Days Validity</li>
+                    <li><i class="fas fa-bolt"></i> High Speed 4G</li>
+                </ul>
+                <button class="recharge-btn" onclick="selectPlan('107', '28 Days', 'Data Booster')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="unlimited">
+                <span class="plan-type-badge">PREMIUM</span>
+                <div class="plan-price">₹<span>5,999</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 365 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-infinity"></i> Truly Unlimited Voice & Data</li>
+                    <li><i class="fas fa-wifi"></i> 3 GB/Day High Speed</li>
+                    <li><i class="fas fa-headset"></i> Priority Support</li>
+                    <li><i class="fas fa-globe"></i> Free Roaming Nationwide</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_5999')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('5999', '365 Days', 'Premium')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="unlimited">
+                <span class="plan-type-badge">PLATINUM</span>
+                <div class="plan-price">₹<span>12,999</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 365 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-infinity"></i> Unlimited Everything</li>
+                    <li><i class="fas fa-wifi"></i> 5 GB/Day Data</li>
+                    <li><i class="fas fa-crown"></i> VIP Priority Network</li>
+                    <li><i class="fas fa-headset"></i> Dedicated Support Manager</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_12999')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('12999', '365 Days', 'Platinum')">Recharge Now</button>
+            </div>
+
+            <div class="plan-card" data-type="unlimited">
+                <span class="plan-type-badge">DIAMOND ELITE</span>
+                <div class="plan-price">₹<span>35,000</span></div>
+                <div class="plan-validity"><i class="fas fa-calendar"></i> 365 Days</div>
+                <ul class="plan-benefits">
+                    <li><i class="fas fa-gem"></i> Truly Unlimited Premium Access</li>
+                    <li><i class="fas fa-rocket"></i> Unlimited High Speed Data</li>
+                    <li><i class="fas fa-user-shield"></i> Personal Account Manager</li>
+                    <li><i class="fas fa-star"></i> Exclusive BSNL Elite Benefits</li>
+                </ul>
+                <button class="view-details-btn" onclick="viewDetails('bsnl_35000')">📋 View Details</button>
+                <button class="recharge-btn" onclick="selectPlan('35000', '365 Days', 'Diamond Elite')">Recharge Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterPlans(type) {
+            const allCards = document.querySelectorAll('.plan-card');
+            const allTabs = document.querySelectorAll('.filter-tab');
+            allTabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            allCards.forEach(card => {
+                if (type === 'all') { card.style.display = 'block'; }
+                else { card.style.display = card.dataset.type === type ? 'block' : 'none'; }
+            });
+        }
+        function viewDetails(planId) {
+            window.location.href = `plan-details.html?planId=${planId}&operator=BSNL`;
+        }
+        function selectPlan(price, validity, planType) {
+            const planId = `bsnl_${price}`;
+            localStorage.setItem('selectedPlan', JSON.stringify({ operator: 'BSNL', price, validity, planType, planId }));
+            window.location.href = 'payment.html';
+        }
+    </script>
+</body>
+</html>
