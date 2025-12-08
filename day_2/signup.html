@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup | Mobile Recharge</title>
+</head>
+<body>
+  <header>
+    <h1>Mobile Recharge</h1>
+    <nav aria-label="Primary">
+      <a href="login.html">Login</a>
+      <a href="signup.html">Signup</a>
+      <a href="recharge.html">Recharge</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Create Account</h2>
+      <p>Provide basic details to start recharging.</p>
+      <form action="login.html" method="get">
+        <label for="signup-name">Full Name</label>
+        <input id="signup-name" name="name" type="text" required />
+
+        <label for="signup-email">Email</label>
+        <input id="signup-email" name="email" type="email" required />
+
+        <label for="signup-phone">Mobile Number</label>
+        <input id="signup-phone" name="phone" type="tel" pattern="[0-9]{10}" placeholder="10-digit" required />
+
+        <label for="signup-password">Password</label>
+        <input id="signup-password" name="password" type="password" required />
+
+        <label for="signup-confirm">Confirm Password</label>
+        <input id="signup-confirm" name="confirm" type="password" required />
+
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already registered? <a href="login.html">Login</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Day 2 HTML structure prototype. No styling or scripts included.</p>
+  </footer>
+</body>
+</html>

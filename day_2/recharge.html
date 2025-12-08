@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recharge | Mobile Recharge</title>
+</head>
+<body>
+  <header>
+    <h1>Mobile Recharge</h1>
+    <nav aria-label="Primary">
+      <a href="login.html">Login</a>
+      <a href="signup.html">Signup</a>
+      <a href="recharge.html">Recharge</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Mobile Recharge</h2>
+      <p>Enter number, select operator and plan amount.</p>
+      <form action="dashboard.html" method="get">
+        <label for="country">Country Code</label>
+        <select id="country" name="country">
+          <option value="+91">+91 India</option>
+          <option value="+1">+1 USA/Canada</option>
+          <option value="+44">+44 UK</option>
+        </select>
+
+        <label for="number">Mobile Number</label>
+        <input id="number" name="number" type="tel" pattern="[0-9]{10}" placeholder="10-digit" required />
+
+        <label for="operator">Operator</label>
+        <select id="operator" name="operator" required>
+          <option value="">Select</option>
+          <option value="Airtel">Airtel</option>
+          <option value="Jio">Jio</option>
+          <option value="Vi">Vi</option>
+          <option value="BSNL">BSNL</option>
+        </select>
+
+        <label for="circle">Circle/Region</label>
+        <select id="circle" name="circle">
+          <option value="">Select</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Karnataka">Karnataka</option>
+        </select>
+
+        <label for="plan">Plan Amount (₹)</label>
+        <input id="plan" name="plan" type="number" min="1" step="1" placeholder="e.g., 199" required />
+
+        <label for="email">Email for receipt (optional)</label>
+        <input id="email" name="email" type="email" />
+
+        <button type="submit">Proceed</button>
+      </form>
+      <p>Need an account? <a href="signup.html">Signup</a>. Already logged in? <a href="dashboard.html">View dashboard</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Day 2 HTML structure prototype. No styling or scripts included.</p>
+  </footer>
+</body>
+</html>

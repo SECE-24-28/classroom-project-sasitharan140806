@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Mobile Recharge</title>
+</head>
+<body>
+  <header>
+    <h1>Mobile Recharge</h1>
+    <nav aria-label="Primary">
+      <a href="login.html">Login</a>
+      <a href="signup.html">Signup</a>
+      <a href="recharge.html">Recharge</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Login</h2>
+      <p>Enter your credentials to access recharge and dashboard pages.</p>
+      <form action="recharge.html" method="get">
+        <label for="login-email">Email</label>
+        <input id="login-email" name="email" type="email" required />
+
+        <label for="login-password">Password</label>
+        <input id="login-password" name="password" type="password" required />
+
+        <label>
+          <input type="checkbox" name="remember" />
+          Remember me
+        </label>
+
+        <button type="submit">Continue</button>
+      </form>
+      <p>New here? <a href="signup.html">Create an account</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Day 2 HTML structure prototype. No styling or scripts included.</p>
+  </footer>
+</body>
+</html>
