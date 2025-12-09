@@ -1,0 +1,8 @@
+/* App-specific styles - most styling is done with Tailwind CSS */
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
