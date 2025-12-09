@@ -1,0 +1,89 @@
+:root {
+  --airtel-red: #E60000;
+  --airtel-dark-red: #CC0000;
+  --airtel-black: #000000;
+  --airtel-white: #FFFFFF;
+  --airtel-gray: #F5F5F5;
+  --airtel-light-gray: #FAFAFA;
+  --airtel-text-dark: #333333;
+  --airtel-text-light: #666666;
+  --airtel-border: #E0E0E0;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at 20% 20%, rgba(230,0,0,0.08), transparent 32%),
+              radial-gradient(circle at 80% 0%, rgba(255,153,153,0.12), transparent 34%),
+              linear-gradient(180deg, #fff 0%, #fdf4f4 50%, #faf7f7 100%);
+  color: var(--airtel-text-dark);
+  line-height: 1.6;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 70px;
+  animation: fadeIn 0.5s ease-in;
+  padding-bottom: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--airtel-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.glass-panel {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  backdrop-filter: blur(12px);
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, #e60000 0%, #ff6b6b 100%);
+  color: #fff;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #e60000, #111);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .main-content { padding-top: 60px; }
+}

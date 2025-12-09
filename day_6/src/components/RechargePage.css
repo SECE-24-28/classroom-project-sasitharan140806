@@ -1,0 +1,333 @@
+.recharge-page {
+  min-height: 100vh;
+  padding: 40px 20px 60px;
+  background: linear-gradient(180deg, rgba(230,0,0,0.06) 0%, rgba(255,255,255,0.9) 35%, #fafafa 100%);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: var(--airtel-text-dark);
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: var(--airtel-text-light);
+  font-size: 1.1rem;
+}
+
+.recharge-form-section {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.recharge-form {
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+  background: var(--airtel-white);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.recharge-form h2 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: var(--airtel-red);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.input-error {
+  border-color: var(--airtel-red) !important;
+}
+
+.operator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.operator-card {
+  padding: 20px;
+  border: 2px solid var(--airtel-border);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--airtel-white);
+}
+
+.operator-card:hover {
+  border-color: var(--airtel-red);
+  transform: translateY(-2px);
+}
+
+.operator-card.active {
+  border-color: var(--airtel-red);
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.05), rgba(230, 0, 0, 0.1));
+  box-shadow: var(--shadow-md);
+}
+
+.operator-logo {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.operator-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--airtel-text-dark);
+}
+
+.plan-type-toggle {
+  display: flex;
+  gap: 12px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border: 2px solid var(--airtel-border);
+  border-radius: 25px;
+  background: var(--airtel-white);
+  color: var(--airtel-text-dark);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.toggle-btn:hover {
+  border-color: var(--airtel-red);
+}
+
+.toggle-btn.active {
+  background: var(--airtel-red);
+  color: var(--airtel-white);
+  border-color: var(--airtel-red);
+}
+
+.plans-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.plans-section h2 {
+  font-size: 2rem;
+  margin-bottom: 32px;
+  text-align: center;
+  color: var(--airtel-text-dark);
+}
+
+.plans-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.plan-card-recharge {
+  background: var(--airtel-white);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
+  animation: slideInUp 0.5s ease-out;
+}
+
+.plan-card-recharge:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.plan-card-recharge.popular {
+  border: 2px solid var(--airtel-red);
+  box-shadow: 0 10px 32px rgba(230,0,0,0.15);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--airtel-red);
+  color: white;
+  padding: 4px 16px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--airtel-red);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.plan-validity {
+  text-align: center;
+  color: var(--airtel-text-light);
+  font-size: 1rem;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--airtel-border);
+}
+
+.plan-details {
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  gap: 12px;
+}
+
+.detail-icon {
+  font-size: 1.2rem;
+}
+
+.detail-text {
+  color: var(--airtel-text-dark);
+  font-size: 0.95rem;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  padding: 20px;
+}
+
+.modal-content {
+  background: var(--airtel-white);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideInUp 0.4s ease-out;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.modal-header {
+  padding: 24px 24px 16px;
+  border-bottom: 2px solid var(--airtel-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-size: 1.8rem;
+  color: var(--airtel-red);
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--airtel-text-light);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.close-btn:hover {
+  background: var(--airtel-gray);
+  color: var(--airtel-red);
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--airtel-border);
+}
+
+.summary-item span {
+  color: var(--airtel-text-light);
+}
+
+.summary-item strong {
+  color: var(--airtel-text-dark);
+}
+
+.summary-item.total {
+  border-top: 2px solid var(--airtel-red);
+  border-bottom: none;
+  margin-top: 16px;
+  padding-top: 16px;
+  font-size: 1.2rem;
+}
+
+.summary-item.total strong {
+  color: var(--airtel-red);
+  font-size: 1.5rem;
+}
+
+.modal-footer {
+  padding: 16px 24px 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.modal-footer .btn {
+  padding: 12px 32px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .operator-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .plans-container {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    margin: 0 16px;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+}
