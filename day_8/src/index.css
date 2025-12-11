@@ -13,3 +13,22 @@ body {
 .container-page {
   @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
 }
+
+/* Print styles for invoice */
+@media print {
+  header, footer, button {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  @page {
+    margin: 1cm;
+  }
+}

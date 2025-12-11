@@ -5,6 +5,8 @@ import LandingPage from './pages/LandingPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import RechargePlans from './pages/RechargePlans.jsx'
 import SignupPage from './pages/SignupPage.jsx'
+import PaymentPage from './pages/PaymentPage.jsx'
+import InvoicePage from './pages/InvoicePage.jsx'
 import './App.css'
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/plans" element={<RechargePlans />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/invoice" element={<InvoicePage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
@@ -26,3 +30,4 @@ function App() {
 }
 
 export default App
+
