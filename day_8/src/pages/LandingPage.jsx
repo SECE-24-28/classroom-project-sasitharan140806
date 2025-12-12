@@ -30,6 +30,46 @@ const offers = [
 
 const LandingPage = () => (
   <div className="bg-white">
+    {/* Animated Banner with Playlist Image */}
+    <section className="relative bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 overflow-hidden">
+      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="container-page py-16 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="space-y-4 animate-slide-in-left">
+            <h2 className="text-4xl font-extrabold text-white leading-tight">
+              🎵 Get Free Music Streaming
+            </h2>
+            <p className="text-xl text-white/90">
+              Enjoy unlimited songs with Wynk Music & Apple Music on selected plans
+            </p>
+            <Link
+              to="/plans"
+              className="inline-block px-8 py-4 rounded-xl bg-white text-purple-600 font-bold shadow-2xl hover:scale-105 transition-transform"
+            >
+              Explore Plans
+            </Link>
+          </div>
+          <div className="relative animate-float">
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-pink-500 rounded-3xl blur-3xl opacity-30 animate-pulse"></div>
+            <img
+              src="/playlist.png"
+              alt="Music Playlist"
+              className="relative w-full h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+              onError={(e) => {
+                e.target.src = 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80'
+              }}
+            />
+          </div>
+        </div>
+      </div>
+      {/* Animated Wave */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" className="w-full h-12 fill-white">
+          <path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,58.7C960,64,1056,64,1152,58.7C1248,53,1344,43,1392,37.3L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+        </svg>
+      </div>
+    </section>
+
     {/* Hero Banner */}
     <section className="bg-gradient-to-r from-airtel-primary to-red-700 text-white py-12">
       <div className="container-page">
