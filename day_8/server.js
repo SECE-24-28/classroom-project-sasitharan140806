@@ -1,50 +1,23 @@
 /* eslint-env node */
 /* global process */
-// Minimal Google Sign-In token verification server (ESM)
+// Simple Express server for development
+import dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
-import { OAuth2Client } from 'google-auth-library'
+
+// Load environment variables from .env file
+dotenv.config()
 
 const PORT = process.env.PORT || 3000
-const CLIENT_ID = process.env.GOOGLE_CLIENT_ID
-
-if (!CLIENT_ID) {
-  console.warn('Warning: GOOGLE_CLIENT_ID is not set. Set it in .env')
-}
-
-const client = new OAuth2Client(CLIENT_ID)
 const app = express()
 app.use(cors({ origin: true }))
 app.use(express.json())
 
-// Token-based sign-in (Google Identity Services ID token)
-app.post('/tokensignin', async (req, res) => {
-  const idToken = req.body.id_token
-  if (!idToken) {
-    return res.status(400).json({ error: 'Missing id_token' })
-  }
-  try {
-    const ticket = await client.verifyIdToken({
-      idToken,
-      audience: CLIENT_ID,
-    })
-    const payload = ticket.getPayload()
-    res.json({
-      ok: true,
-      user: {
-        id: payload.sub,
-        email: payload.email,
-        name: payload.name,
-        picture: payload.picture,
-        email_verified: payload.email_verified,
-      },
-    })
-  } catch (err) {
-    console.error('verifyIdToken error:', err)
-    res.status(401).json({ error: 'Invalid ID token' })
-  }
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', message: 'Server is running' })
 })
 
 app.listen(PORT, () => {
-  console.log(`Auth server listening on ${PORT}`)
+  console.log(`Server listening on ${PORT}`)
 })

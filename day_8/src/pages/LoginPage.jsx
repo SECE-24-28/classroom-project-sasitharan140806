@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 
@@ -9,52 +9,8 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const googleBtnRef = useRef(null)
 
-  // Initialize Google Identity Services
-  useEffect(() => {
-    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '1079564204533-l1lmfau7p51769s3t6do8jopudlglt6i.apps.googleusercontent.com'
 
-    const script = document.createElement('script')
-    script.src = 'https://accounts.google.com/gsi/client'
-    script.async = true
-    script.defer = true
-    script.onload = () => {
-      /* global google */
-      if (!window.google || !window.google.accounts || !window.google.accounts.id) return
-      window.google.accounts.id.initialize({
-        client_id: clientId,
-        ux_mode: 'popup',
-        callback: async (response) => {
-          try {
-            const r = await fetch('http://localhost:3000/tokensignin', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id_token: response.credential }),
-            })
-            const data = await r.json()
-            if (!r.ok || !data.ok) throw new Error(data.error || 'Google sign-in failed')
-            login({ email: data.user.email, name: data.user.name || 'User', id: data.user.id })
-            navigate('/plans')
-          } catch (e) {
-            setError(e.message || 'Google sign-in error')
-          }
-        },
-      })
-      if (googleBtnRef.current) {
-        window.google.accounts.id.renderButton(googleBtnRef.current, {
-          theme: 'outline',
-          size: 'large',
-          shape: 'pill',
-          text: 'continue_with',
-        })
-      }
-    }
-    document.body.appendChild(script)
-    return () => {
-      document.body.removeChild(script)
-    }
-  }, [login, navigate])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -154,9 +110,8 @@ const LoginPage = () => {
                 <div className="flex-1 h-px bg-gray-200"></div>
               </div>
 
-              {/* Social Login Buttons */}
+              {/* Alternative Login Options */}
               <div className="space-y-3">
-                <div ref={googleBtnRef} className="w-full flex justify-center"></div>
                 <button className="w-full bg-white border-2 border-gray-200 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-50 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3">
                   <span className="text-xl">📱</span> Continue with Mobile OTP
                 </button>
